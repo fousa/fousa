@@ -1,0 +1,19 @@
+%table#selector{ :cellspacing => "2px", :cellpadding => "5px" }
+  %tr
+    %th.clear
+      &nbsp;
+    - %w( JAN FEB MRT APR MAY JUN JUL AUG SEP OCT NOV DEC ).each do |human_month|
+      %th
+        = human_month
+  - archive.each_key do |year|
+    %tr
+      %th
+        = year
+      - archive[year].keys.sort.each do |month|
+        - count = archive[year][month]
+        - if current_month == month.to_s && current_year == year.to_s
+          %td
+            X
+        - else
+          %td.blocked
+            = link_to_unless count == 0, count > 0 ? count : "&nbsp;", archive_by_month_and_year_url(year, month)

@@ -1,0 +1,1 @@
+CONFIG = File.open(RAILS_ROOT + '/config/config.yml') { |file| YAML::load(file) }

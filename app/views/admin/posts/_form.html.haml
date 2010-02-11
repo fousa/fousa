@@ -1,0 +1,44 @@
+%tr
+  %td
+    %label{ :for => "post_note", :style => "padding-top: 0;" }
+      note
+  %td
+    = form.check_box :note, { :class => 'field', :onclick => "javascript: toggleNote(this);" }
+%tr
+  %td
+    %label{ :for => "post_active", :style => "padding-top: 0;" }
+      active
+  %td
+    = form.check_box :active, :class => 'field'
+%tr#post_title_row
+  %td
+    %label{ :for => "post_title" }
+      title
+  %td
+    = errored_textfield form.text_field(:title, :class => 'field'), post.errors.invalid?(:title)
+%tr#post_permalink_row
+  %td
+    %label{ :for => "post_permalink" }
+      permalink
+  %td
+    = errored_textfield form.text_field(:permalink, :class => 'field'), post.errors.invalid?(:permalink)
+%tr#post_tag_list_row
+  %td
+    %label{ :for => "post_tag_list" }
+      tags
+  %td
+    = errored_textfield form.text_field(:tag_list, :class => 'field'), post.errors.invalid?(:tag_list)
+    %span.meta
+      comma seperated
+%tr
+  %td
+    %label{ :for => "post_content" }
+      content
+  %td
+    = errored_textfield form.text_area(:content, { :rows => 30, :cols => 60, :class => "field" }), post.errors.invalid?(:content)
+%tr
+  %td
+    %label{ :for => "post_created_at", :style => "padding-top: 0;" }
+      created at
+  %td
+    = form.datetime_select(:created_at)

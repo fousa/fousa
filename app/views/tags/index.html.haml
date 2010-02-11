@@ -1,0 +1,16 @@
+= title_tag "cloud", root_url
+
+%p#info_line
+  This is a summary of all the tags used on this blog.
+
+- if @tags.size > 0
+  %ul#cloud
+    - tag_cloud @tags, %w( cloud1 cloud2 cloud3 cloud4 cloud5 ) do |tag, css_class|
+      %li
+        = link_to tag.name.downcase, tag_url(tag.name.downcase), :class => css_class
+- else
+  %div#error
+    %p
+      No tags were used in the blog posts
+
+= top_bottom_tag

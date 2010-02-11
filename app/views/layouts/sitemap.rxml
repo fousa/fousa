@@ -1,0 +1,47 @@
+xml.instruct!
+xml.urlset('xmlns'=>'http://www.sitemaps.org/schemas/sitemap/0.9',
+'xmlns:xsi'=>'http://www.w3.org/2001/XMLSchema-instance',
+'xsi:schemaLocation'=>'http://www.sitemaps.org/schemas/sitemap/0.9
+http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd') {
+  xml.url {
+    xml.loc(blog_url)
+    xml.lastmod(Post.find(:all, :limit => 1, :order => "updated_at DESC")[0].updated_at)
+    xml.changefreq("weekly")
+    xml.priority("1.0")
+  }
+  
+  xml.url {
+    xml.loc(scratches_url)
+    xml.lastmod(Post.find(:all, :limit => 1, :order => "updated_at DESC")[0].updated_at)
+    xml.changefreq("weekly")
+    xml.priority("1.0")
+  }
+  
+  xml.url {
+    xml.loc(cloud_url)
+    xml.lastmod(Post.find(:all, :limit => 1, :order => "updated_at DESC")[0].updated_at)
+    xml.changefreq("weekly")
+    xml.priority("0.9")
+  }
+  
+  xml.url {
+    xml.loc(services_url)
+    xml.lastmod(Post.find(:all, :limit => 1, :order => "updated_at DESC")[0].updated_at)
+    xml.changefreq("daily")
+    xml.priority("0.8")
+  }
+  
+  xml.url {
+    xml.loc(contact_url)
+    xml.lastmod(Post.find(:all, :limit => 1, :order => "updated_at DESC")[0].updated_at)
+    xml.changefreq("weekly")
+    xml.priority("0.6")
+  }
+  
+  xml.url {
+    xml.loc(about_url)
+    xml.lastmod("2008-12-31")
+    xml.changefreq("yearly")
+    xml.priority("0.7")
+  }
+}

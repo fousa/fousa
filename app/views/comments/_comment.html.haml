@@ -1,0 +1,12 @@
+%div{ :class => comment.personal_comment ? "mygravatar" : "gravatar" }
+  = link_to_unless !admin?, gravatar_for(comment, :size => 50), post_comment_path(comment.post, comment), :confirm => 'Are you sure?', :method => :delete
+
+%div{ :class => comment.personal_comment ? "comment mycomment" : "comment" }
+  %p
+    =h comment.comment
+  %p.meta
+    written by
+    = link_to comment.name.capitalize, comment.website.downcase
+    &rarr;
+    = time_ago_in_words(comment.created_at)
+    ago

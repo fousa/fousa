@@ -1,0 +1,51 @@
+= paginate_top_tag @posts
+
+= title_tag "posts:all"
+
+= show_notice flash[:notice_all_spam_destroyed], "Your website is free of spam"
+
+%p#criteria
+  totals
+  %span
+    posts:
+    %strong
+      = @total_posts
+  %span
+    scatches:
+    %strong
+      = @total_scratches
+  %span
+    hidden:
+    %strong
+    = @total_hidden
+  %span
+    comments:
+    %strong
+    = @total_comments
+
+%table#admin{ :border => "0", :cellspacing => "0", :cellpadding => "0" }
+  - @posts.each do |post|
+    %tr
+      - if post.note
+        %td
+          = truncate strip_tags(post.content), 200
+      - else
+        %td
+          = link_to post.title, permalink_url(post.permalink)
+      %td{ :style => "width: 10em; text-align: right;", :valign => "top" }
+        =h time_ago_in_words(post.created_at)
+        ago
+      %td{ :style => "width: 2em; text-align: right;",                 :valign => "top" }
+        =h post.comments.size
+      %td{ :style => "width: 2em; text-align: right; color: #FF887A;", :valign => "top" }
+        =h post.comments.count(:all)
+      %td{ :style => "width: 4em; text-align: right;",                 :valign => "top" }
+        =h post.note ? "note" : "article"
+      %td{ :style => "width: 4em; text-align: right;",                 :valign => "top" }
+        =h post.active ? "show" : "hide"
+      %td{ :style => "width: 3em; text-align: right;",                 :valign => "top" }
+        = link_to 'edit', edit_admin_post_path(post)
+      %td{ :style => "width: 4em; text-align: right;",                 :valign => "top" }
+        = link_to 'remove', admin_post_path(post), :confirm => 'Are you sure?', :method => :delete
+
+= paginate_bottom_tag @posts

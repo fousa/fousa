@@ -1,0 +1,18 @@
+= archive_top_tag archive_index_url
+
+= title_tag "blog"
+
+- previous_year = 0
+- @posts.each do |post|
+  - if previous_year != post.created_at.year && previous_year != 0
+    %p.year_separator
+      = post.created_at.year
+
+  - if post.note?
+    = render :partial => "scratches/scratch", :locals => { :scratch => post, :hightlight_query => "" }
+  - else
+    = render :partial => "post", :locals => { :post => post, :container => false, :hightlight_query => "" }
+
+  - previous_year = post.created_at.year
+
+= archive_bottom_tag archive_index_url

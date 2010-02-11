@@ -1,0 +1,10 @@
+%div.note
+  %div.date
+    %abbr{ :title => last_updated_sql(scratch.created_at) }
+      %span.day= scratch.created_at.day
+      %span.month= format_month(scratch.created_at)
+
+  %div.blog
+    %p.small
+      %img{ :src => "/images/note_black.png", :alt => "" }
+      = highlight(scratch.content, hightlight_query)

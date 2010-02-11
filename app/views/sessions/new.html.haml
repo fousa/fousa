@@ -1,0 +1,20 @@
+= title_tag "login"
+
+%div.input
+  %p
+    Please log in to admin this website.
+
+  - form_tag sessions_path do
+
+    = show_error flash[:error_authentication], "Not authorized, please login"
+    = show_error flash[:error],                "You entered the wrong password"
+
+    %table{ :cellspacing => "10px", :cellpadding => "0" }
+      %tr
+        %td
+          %label{ :for => "password" }
+            password
+        %td
+          = errored_textfield password_field_tag(:password, '', :class => 'field'), flash[:error]
+
+= top_bottom_tag

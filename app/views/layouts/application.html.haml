@@ -1,0 +1,63 @@
+!!!
+
+%html
+  %head
+    %meta{ "http-equiv" => "Content-Type", :content => "text/html; charset=utf-8" }
+
+    %meta{ :name => "verify-v1",   :content => "+Qi2WzdDCgFhbU6F9P2SbDQaFus54H++eMNKyUwog8Q=" }
+    %meta{ :name => "keywords",    :content => @keywords || "fousa, blog, jelle vandebeeck, heverlee" }
+    %meta{ :name => "description", :content => "Personal weblog of Jelle Vandebeeck" }
+    %meta{ :name => "DC.Title",    :content => @title || "fousa" }
+    %meta{ :name => "DC.Creator",  :content => "Jelle Vandebeeck" }
+    %meta{ :name => "DC.Language", :content => "en" }
+    %meta{ :name => "DC.Format",   :content => "text/html" }
+    %meta{ :name => "DC.Type",     :content => "text" }
+    %meta{ :name => "DC.Rights",   :content => "http://www.fousa.be/licenses" }
+
+    %title= "#{@title}#{@title.nil? ? "fousa" : " ~ fousa"}" || "fousa"
+
+    %link{ :rel => "shortcut icon",    :href => "/favicon.ico" }
+    %link{ :rel => "apple-touch-icon", :href => "/apple-touch-icon.png" }
+    %link{ :rel => "search",           :href => "opensearch.xml",                     :title => "Fousa", :type => "application/opensearchdescription+xml" }
+    %link{ :rel => "alternate",        :href => "http://feeds2.feedburner.com/fousa", :title => "RSS",   :type => "application/rss+xml" }
+
+    = stylesheet_link_tag "master"
+
+    = javascript_include_tag :defaults if admin?
+
+  %body
+    %ul#menu
+      %li#search_menu
+        - form_tag search_index_path, :method => "get" do
+          %p
+            = text_field_tag :search, '', :value => @query,  :size => 10
+            = image_submit_tag "/images/search.png", :id => "do_search"
+
+      = li_tag @selected, "blog",      blog_path,      @keep_linking
+      = li_tag @selected, "scratches", scratches_path, @keep_linking
+      = li_tag @selected, "cloud",     cloud_path,     @keep_linking
+      = li_tag @selected, "services",  services_path,  @keep_linking
+      = li_tag @selected, "contact",   contact_path,   @keep_linking
+      = li_tag @selected, "about",     about_path,     @keep_linking
+
+    = admin_links admin?, @admin_section || "no", @admin_post || ""
+
+    %div#content
+      = show_notice flash[:login_notice],  "You are now logged in to this website"
+      = show_notice flash[:logoff_notice], "You are now logged off from this website"
+
+      = yield
+
+    %p#footer
+      %span.left_span
+        = "created and designed by <a href=\"#{about_url}\"><span class=\"vcard\"><span class=\"fn\">Jelle Vandebeeck</span></span></a> and last edited about <abbr title=\"#{last_updated_sql(@last_updated_at)}\">#{last_updated(@last_updated_at)} ago</span></span><a href=\"http://feeds2.feedburner.com/fousa\" class=\"rss\">&nbsp;</a><a href=\"http://creativecommons.org/licenses/by/2.0/be/\" rel=\"nofollow\" class=\"cc\">&nbsp;</a></p>"
+
+    - if ENV['RAILS_ENV'] == "production" && !admin? && !@hide_google
+      %script{ :type => "text/javascript" }
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      %script{ :type => "text/javascript" }
+        try {
+        var pageTracker = _gat._getTracker("UA-2750996-1");
+        pageTracker._trackPageview();
+        } catch(err) {}</script>

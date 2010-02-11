@@ -1,0 +1,12 @@
+Hi Jelle,
+
+This message was send to you by <%= @comment.name %>
+
+The comment was posten on the following article: http://www.fousa.be<%= permalink_path(@comment.post.permalink) %>
+
+Name: <%= @comment.name %>
+Email: <%= @comment.email %>
+Website: <%= @comment.website %>
+
+Message:
+<%= @comment.comment %>

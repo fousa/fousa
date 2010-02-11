@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+	<ShortName>Fousa</ShortName>
+	<Description>Lookup something on the Fousa Blog</Description>
+	<InputEncoding>UTF-8</InputEncoding>
+ 	<Image height="16" width="16" type="image/x-icon">http://www.fousa.be/favicon.ico</Image>
+	<Url type="text/html" method="GET" template="http://localhost:3000/search?search={searchTerms}"/>
+</OpenSearchDescription>

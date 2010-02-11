@@ -1,0 +1,17 @@
+= blog_top_tag root_url
+= title_tag "tag", root_url
+
+%p#criteria
+  Current tag:
+  %span
+    = @tag.name.downcase
+
+- previous_year = ""
+- @posts.each do |post|
+  - if previous_year != post.created_at.year
+    %p.year_separator
+      =h post.created_at.year
+    = render :partial => "posts/post", :locals => { :post => post, :container => false, :hightlight_query => "" }
+    - previous_year = post.created_at.year
+
+= blog_bottom_tag root_url

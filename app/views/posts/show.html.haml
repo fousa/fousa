@@ -1,0 +1,29 @@
+= blog_top_tag root_url
+= title_tag "blog", root_url
+
+%div.date
+  %abbr{ :title => last_updated_sql(@post.created_at) }
+    %span.day
+      =h @post.created_at.day
+    %span.month
+      =h format_month @post.created_at
+
+%div.blog
+  %h2
+    =h @post.title
+
+  = format_tag_list @post
+
+  %div.permalink_content
+    = @post.content
+
+  %div#commentinput
+    %p
+      Send me some feedback!
+
+    = render :partial => "comments/form", :object => @post
+
+- @post.comments.sorted.each do |comment|
+  = render :partial => "comments/comment", :locals => { :comment => comment }
+
+= blog_bottom_tag root_url

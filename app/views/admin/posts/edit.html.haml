@@ -1,0 +1,36 @@
+= title_tag "admin/post:edit"
+
+%div.input
+  %p
+    Fill in all the data to edit the blog post.
+
+  - form_for [:admin, @post] do |form|
+
+    = show_error  flash[:error],  "There was an error while trying to edit the blog post"
+    = show_notice flash[:notice], "The blog post was edited"
+
+    %table{ :cellspacing => "10px", :cellpadding => "0" }
+
+      = render :partial => "form", :locals => { :form => form, :post => @post }
+
+      %tr
+        %td
+          &nbsp;
+        %td
+          = form.submit "Save", :class => "button"
+
+%script{ :type => "text/javascript" }
+  function toggleNote(checkbox) {
+  if (checkbox.checked) {
+  $('post_title_row').style.display = "none"
+  $('post_permalink_row').style.display = "none"
+  $('post_tag_list_row').style.display = "none"
+  } else {
+  $('post_title_row').style.display = "table-row"
+  $('post_permalink_row').style.display = "table-row"
+  $('post_tag_list_row').style.display = "table-row"
+  }
+  }
+  toggleNote(document.getElementById('post_note'))
+
+= top_bottom_tag
