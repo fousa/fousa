@@ -1,3 +1,4 @@
+.gitignore
 # Rails locals
 log/*.log
 tmp/**/*
