@@ -67,8 +67,9 @@ module HtmlHelper
   end
 
   def paginate_top_tag(posts)
+
     tag = "<p id='headerlink'>"
-    tag << will_paginate(posts)
+    tag << will_paginate(posts).to_s
     tag << "</p>"
     tag
   end
@@ -79,7 +80,7 @@ module HtmlHelper
     tag << "go to the "
     tag << link_to("top &uarr;", "#menu")
     tag << "</span>"
-    tag << will_paginate(posts)
+    tag << will_paginate(posts).to_s
     tag << "</p>"
     tag
   end
