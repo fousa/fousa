@@ -9,11 +9,11 @@
     %tr
       %th
         = year
-      - archive[year].keys.sort.each do |month|
-        - count = archive[year][month]
-        - if current_month == month.to_s && current_year == year.to_s
+      - %w( 1 2 3 4 5 6 7 8 9 10 11 12 ).each do |month|
+        - count = archive[year][month.to_i] || 0
+        - if month && current_month.to_i == month.to_i && current_year == year.to_s
           %td
             X
         - else
           %td.blocked
-            = link_to_unless count == 0, count > 0 ? count : "&nbsp;", archive_by_month_and_year_url(year, month)
+            = link_to_unless count == 0, count > 0 ? count : "&nbsp;", archive_by_year_and_month_path(year, month.to_i)

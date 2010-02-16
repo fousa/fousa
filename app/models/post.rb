@@ -31,17 +31,14 @@ class Post < ActiveRecord::Base
     comments.size
   end
 
-  def self.count_archive
-    years = posts.map(&:created_at).map(&:year).uniq.sort {|x,y| y <=> x }
-    years_hash = Hash.new
-    years.each do |year|
-      months_hash = Hash.new
-      %w(01 02 03 04 05 06 07 08 09 10 11 12).each do |month|
-        months_hash[month] = count(:all, :conditions => ["active = true AND EXTRACT(MONTH from created_at) = ? AND EXTRACT(YEAR from created_at) = ?", month, year])
+  def self.archive_table
+    # Thanks to Jean-Babtiste Escoyez for showing this awesome piece of Ruby code!
+    active.group_by{ |post| post.created_at.year }.inject({}) do |yearly_archive, (year, blog_posts)|
+      monthly_archive = blog_posts.group_by{ |post| post.created_at.month }.inject({}) do |monthly_archive, (month, blog_posts)|
+        monthly_archive.merge({month => blog_posts.size})
       end
-      years_hash[year] = months_hash
+      yearly_archive.update({year => monthly_archive})
     end
-    years_hash
   end
 
   def self.archive(year, month)

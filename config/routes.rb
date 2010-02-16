@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.cloud "cloud", :controller => "tags", :action => "index"
 
-  map.archive_by_month_and_year "archive/:year/:month/", :controller => "archive", :requirements => { :year => /\d{4}/, :month => /0[1-9]|1[0-2]/}
+  map.archive_by_year_and_month "archive/:year/:month/", :controller => "archive"
 
   map.permalink "blog/:permalink", :controller => "posts", :action => "show"
 

@@ -7,7 +7,7 @@ class ArchiveController < ApplicationController
     @selected_month = params[:month] ? params[:month] : Time.now.strftime("%m")
 
     @posts   = Post.archive(@selected_year, @selected_month)
-    @archive = Post.count_archive
+    @archive = Post.archive_table
 
     initialize_archive
   end

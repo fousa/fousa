@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       @comment.personal_comment = true
     end
     if @comment.save
-      FousaMailer.deliver_comment(@comment)
+      FousaMailer.deliver_comment(@comment) unless @comment.personal_comment
       flash[:notice] = true
     else
       flash[:error] = true
