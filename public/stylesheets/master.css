@@ -5,6 +5,10 @@
 	padding: 0;
 }
 
+html {
+	background-color: #E6E6CC;
+}
+
 body {
 	font-size: small;
 	font-family: "Century Gothic", "AppleGothic", sans-serif;
