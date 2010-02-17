@@ -6,7 +6,7 @@ This is a public repository from my public website. I made this public so I can 
 Let's begin
 -----------
 
-- add a config.yml file in the config directory
+- change a config.yml file in the config directory
 - add a dataabase.yml file in the config directory
 
 Config.yml
