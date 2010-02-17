@@ -22,6 +22,8 @@ class SiteController < ApplicationController
   end
 
   def create
+    raise "ok"
+
     initialize_contact
 
     @contact = Contact.new(params[:contact])

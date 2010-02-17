@@ -11,7 +11,7 @@
   - if previous_year != post.created_at.year
     %p.year_separator
       =h post.created_at.year
-    = render :partial => "posts/post", :locals => { :post => post, :container => false, :hightlight_query => "" }
-    - previous_year = post.created_at.year
+  = render :partial => "posts/post", :locals => { :post => post, :container => false, :hightlight_query => "" }
+  - previous_year = post.created_at.year
 
 = blog_bottom_tag root_url

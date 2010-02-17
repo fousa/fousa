@@ -16,4 +16,4 @@
             X
         - else
           %td.blocked
-            = link_to_unless count == 0, count > 0 ? count : "&nbsp;", archive_by_year_and_month_path(year, month.to_i)
+            = link_to_unless count == 0, count > 0 ? count : raw("&nbsp;"), archive_by_year_and_month_path(year, month.to_i)

@@ -12,6 +12,6 @@ class Comment < ActiveRecord::Base
 
   validates_inclusion_of :snow, :in => %w( cold )
 
-  named_scope :sorted, :order => "created_at ASC"
+  scope :sorted, :order => "created_at ASC"
 
 end

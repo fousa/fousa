@@ -11,7 +11,7 @@ module TagHelper
   		end
   		html << "</ul>"
   	end
-  	html
+  	raw html
   end
 
 end

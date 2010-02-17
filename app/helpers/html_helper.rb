@@ -9,7 +9,7 @@ module HtmlHelper
     end
     html << "<span>#{subpage_title}</span>"
     html << "</h1>"
-    html
+    raw html
   end
 
   def admin_links(show=false, type="no", post=nil)
@@ -47,69 +47,69 @@ module HtmlHelper
     html << link_to("logoff", logoff_path)
     html << "</li>"
     html << "</ul>"
-    html
+    raw html
   end
 
   def archive_top_tag(link)
     tag  = "<p id='headerlink'>"
     tag << "Check out the "
-    tag << link_to("archive &rarr;", link)
+    tag << link_to(raw("archive &rarr;"), link)
     tag << "</p>"
-    tag
+    raw tag
   end
 
   def blog_top_tag(link)
     tag  = "<p id='headerlink'>"
-    tag << link_to("&larr; back", link)
+    tag << link_to(raw("&larr; back"), link)
     tag << " to the blog"
     tag << "</p>"
-    tag
+    raw tag
   end
 
   def paginate_top_tag(posts)
     tag = "<p id='headerlink'>"
     tag << will_paginate(posts).to_s
     tag << "</p>"
-    tag
+    raw tag
   end
 
   def paginate_bottom_tag(posts)
     tag  ="<p id='more'>"
     tag << "<span class='left_align'>"
     tag << "go to the "
-    tag << link_to("top &uarr;", "#menu")
+    tag << raw(link_to(raw("top &uarr;"), "#menu"))
     tag << "</span>"
     tag << will_paginate(posts).to_s
     tag << "</p>"
-    tag
+    raw tag
   end
 
   def archive_bottom_tag(link)
     tag = "<p id='more'>"
     tag << "<span class='left_align'>go to the "
-    tag << link_to("top &uarr;", "#menu")
+    tag << link_to(raw("top &uarr;"), "#menu")
     tag << "</span>"
     tag << "Check out the "
-    tag << link_to("archive &rarr;", link)
+    tag << link_to(raw("archive &rarr;"), link)
     tag << "</p>"
-    tag
+    raw tag
   end
 
   def blog_bottom_tag(link)
     tag  = "<p id='more'>"
     tag << "<span class='left_align'>go to the "
-    tag << link_to("top &uarr;", "#menu")
+    tag << link_to(raw("top &uarr;"), "#menu")
     tag << "</span>"
-    tag << link_to( "&larr; back", link)
+    tag << link_to(raw("&larr; back"), link)
     tag << " to the blog</p>"
-    tag
+    raw tag
   end
 
   def top_bottom_tag
     tag  = "<p id='more'>go to the "
-    tag << link_to("&uarr;", "#menu")
+    tag << link_to(raw("&uarr;"), "#menu")
     tag << "</p>"
-    tag
+    raw tag
   end
 
   def li_tag(selected_title, checked_title, checked_link, keep_linking = false)
@@ -126,14 +126,15 @@ module HtmlHelper
       html << link_to(checked_title, checked_link)
       html << "</li>"
     end
+    raw html
   end
 
   def show_error(indicator, text)
-    "<div id='error'><p>#{text}</p></div>" if indicator
+    raw "<div id='error'><p>#{text}</p></div>" if indicator
   end
 
   def show_notice(indicator, text)
-    "<div id='success'><p>#{text}</p></div>" if indicator
+    raw "<div id='success'><p>#{text}</p></div>" if indicator
   end
 
   def errored_textfield(field, indicator)
@@ -141,7 +142,7 @@ module HtmlHelper
     html << "<div class='error'>" if indicator
 		html << field
 		html << "</div>" if indicator
-	  html
+	  raw html
   end
 
 end

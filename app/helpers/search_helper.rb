@@ -14,10 +14,10 @@ module SearchHelper
     options.reverse_merge!(:highlighter => '<span class="yellow">\1</span>')
 
     if text.blank? || phrases.blank?
-      text
+      raw text
     else
       match = Array(phrases).map { |p| Regexp.escape(p) }.join('|')
-      text.gsub(/(#{match})/i, options[:highlighter])
+      raw text.gsub(/(#{match})/i, options[:highlighter])
     end
   end
 

@@ -8,7 +8,7 @@ module PostsHelper
   end
 
   def format_overview_content(content, max=350)
-    truncate(strip_tags(content), max)
+    truncate strip_tags(content), { :length => max, :omission => "..." }
   end
 
 end

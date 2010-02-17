@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100210232741) do
+ActiveRecord::Schema.define(:version => 20100217140626) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20100210232741) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "personal_comment"
+    t.boolean  "spam"
   end
 
   create_table "posts", :force => true do |t|
@@ -33,13 +34,24 @@ ActiveRecord::Schema.define(:version => 20100210232741) do
     t.boolean  "note"
   end
 
+  create_table "simple_captcha_data", :force => true do |t|
+    t.string   "key",        :limit => 40
+    t.string   "value",      :limit => 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
     t.datetime "created_at"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context"
   end
 
+  add_index "taggings", ["context"], :name => "index_taggings_on_context"
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
 

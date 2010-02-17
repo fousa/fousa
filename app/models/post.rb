@@ -12,12 +12,12 @@ class Post < ActiveRecord::Base
 
   validates_format_of :permalink, :with => /^[a-z,0-9,-]*$/, :if => :article?
 
-  named_scope :sorted,    :order      => "created_at DESC"
-  named_scope :scratches, :conditions => { :active => true, :note => true },  :order => "created_at DESC"
-  named_scope :posts,     :conditions => { :active => true, :note => false }, :order => "created_at DESC"
-  named_scope :blog,      :conditions => { :active => true },                 :order => "created_at DESC",:limit => 10
-  named_scope :active,    :conditions => { :active => true },                 :order => "created_at DESC"
-  named_scope :inactive,  :conditions => { :active => false },                :order => "created_at DESC"
+  scope :sorted,    :order      => "created_at DESC"
+  scope :scratches, :conditions => { :active => true, :note => true },  :order => "created_at DESC"
+  scope :posts,     :conditions => { :active => true, :note => false }, :order => "created_at DESC"
+  scope :blog,      :conditions => { :active => true },                 :order => "created_at DESC",:limit => 10
+  scope :active,    :conditions => { :active => true },                 :order => "created_at DESC"
+  scope :inactive,  :conditions => { :active => false },                :order => "created_at DESC"
 
   def article?
     !note

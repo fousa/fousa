@@ -1,38 +1,37 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :posts, :as => "blog" do |post|
-    post.resources :comments
+Fousa::Application.routes.draw do |map|
+  resources :posts, :as => "blog" do
+    resources :comments
   end
-  map.resources :site
-  map.resources :archive
-  map.resources :tags
-  map.resources :search
-  map.resources :scratches
-  map.resources :sessions
+  resources :site,    :as => "site"
+  resources :archive, :as => "archive"
+  resources :tags
+  resources :search,  :as => "search"
+  resources :scratches
+  resources :sessions
 
-  map.namespace :admin do |admin|
-    admin.resources :posts
+  namespace :admin do
+    resources :posts
   end
 
-  map.root :controller => "posts"
+  root :to => "posts#index"
 
-  map.blog "blog", :controller => "posts"
+  match "blog" => "posts#index", :as => :blog
 
-  map.about    "about",       :controller => "site", :action => "show"
-  map.contact  "contact",     :controller => "site", :action => "new"
-  map.services "services",    :controller => "site"
-  map.connect  "sitemap.xml", :controller => "site", :format => "xml"
+  match "about"       => "site#show",  :as => :about
+  match "contact"     => "site#new",   :as => :contact
+  match "services"    => "site#index", :as => :services
 
-  map.cloud "cloud", :controller => "tags", :action => "index"
+  match "sitemap.xml" => "site#index", :format => "xml"
 
-  map.archive_by_year_and_month "archive/:year/:month/", :controller => "archive"
+  match "cloud" => "tags#index", :as => :cloud
 
-  map.permalink "blog/:permalink", :controller => "posts", :action => "show"
+  match "archive/:year/:month" => "archive#index", :as => :archive_by_year_and_month
 
-  map.login  "login",  :controller => "sessions", :action => "new"
-  map.logoff "logoff", :controller => "sessions", :action => "destroy"
+  match "blog/:permalink" => "posts#show", :as => :permalink
 
-  map.connect ":controller/:action/:id"
-  map.connect ":controller/:action/:id.:format"
+  match "login"  => "sessions#new",      :as => :login
+  match "logoff" => "sessions#destroy", :as => :logoff
 
-  map.connect "*path", :controller => "sessions", :action => "show", :status => "404"
+  match ":controller(/:action(/:id(.:format)))"
+  match "*path"                                 => "sessions#show", :status => "404"
 end

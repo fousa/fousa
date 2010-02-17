@@ -1,9 +1,6 @@
-class Contact < ActiveRecord::BaseWithoutTable
-  column :name,    :string
-  column :email,   :string
-  column :website, :string
-  column :snow,    :string
-  column :content, :text
+class Contact
+
+  include ActiveModel::Validations
 
   validates_presence_of :name
   validates_presence_of :content
@@ -12,4 +9,24 @@ class Contact < ActiveRecord::BaseWithoutTable
   validates_format_of :email, :allow_nil => false, :with => /^.+@[^\.].*\.[a-z]{2,}$/ix, :message => "must be a valid email"
 
   validates_inclusion_of :snow, :in => %w( cold )
+
+  attr_accessor :name,
+                :email,
+                :website,
+                :snow,
+                :content
+
+  def initialize(options={})
+    [:name, :email, :website, :snow, :content].each do |field|
+      class << self
+        self
+      end.module_eval{attr_accessor field}
+      self.send("#{field}=", options[field.to_sym])
+    end
+  end
+
+  def new_record?
+    true
+  end
+
 end
