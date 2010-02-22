@@ -3,4 +3,4 @@
 require ::File.expand_path('../config/environment',  __FILE__)
 run Fousa::Application
 
-use Rack::Static
+use Rack::Static, :urls => ["/stylesheets", "/images", "/javascripts"], :root => "public"
