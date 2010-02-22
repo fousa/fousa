@@ -1,6 +1,7 @@
 # This file is used by Rack-based servers to start the application.
 
 require ::File.expand_path('../config/environment',  __FILE__)
-run Fousa::Application
 
-use Rack::Static
+use Rack::Static, :urls => ["/stylesheets", "/images", "/javascripts"], :root => "public"
+
+run Fousa::Application
