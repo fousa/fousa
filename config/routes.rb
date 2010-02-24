@@ -33,5 +33,4 @@ Fousa::Application.routes.draw do |map|
   match "logoff" => "sessions#destroy", :as => :logoff
 
   match ":controller(/:action(/:id(.:format)))"
-  # match "*path"                                 => "sessions#show", :status => "404"
 end
