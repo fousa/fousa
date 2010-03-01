@@ -10,7 +10,8 @@ class Contact
 
   validates_inclusion_of :snow, :in => %w( cold )
 
-  attr_accessor :name,
+  attr_accessor :id,
+                :name,
                 :email,
                 :website,
                 :snow,

@@ -19,6 +19,24 @@ class Post < ActiveRecord::Base
   scope :active,    :conditions => { :active => true },                 :order => "created_at DESC"
   scope :inactive,  :conditions => { :active => false },                :order => "created_at DESC"
 
+  class << self
+
+    def archive_table
+      # Thanks to Jean-Babtiste Escoyez for showing this awesome piece of Ruby code!
+      active.group_by{ |post| post.created_at.year }.inject({}) do |yearly_archive, (year, blog_posts)|
+        monthly_archive = blog_posts.group_by{ |post| post.created_at.month }.inject({}) do |monthly_archive, (month, blog_posts)|
+          monthly_archive.merge({month => blog_posts.size})
+        end
+        yearly_archive.update({year => monthly_archive})
+      end
+    end
+
+    def archive(year, month)
+      all :conditions => ["active = true AND EXTRACT(MONTH from created_at) = ? AND EXTRACT(YEAR from created_at) = ?", month, year], :order => "created_at DESC"
+    end
+
+  end
+
   def article?
     !note
   end
@@ -31,17 +49,4 @@ class Post < ActiveRecord::Base
     comments.size
   end
 
-  def self.archive_table
-    # Thanks to Jean-Babtiste Escoyez for showing this awesome piece of Ruby code!
-    active.group_by{ |post| post.created_at.year }.inject({}) do |yearly_archive, (year, blog_posts)|
-      monthly_archive = blog_posts.group_by{ |post| post.created_at.month }.inject({}) do |monthly_archive, (month, blog_posts)|
-        monthly_archive.merge({month => blog_posts.size})
-      end
-      yearly_archive.update({year => monthly_archive})
-    end
-  end
-
-  def self.archive(year, month)
-    all :conditions => ["active = true AND EXTRACT(MONTH from created_at) = ? AND EXTRACT(YEAR from created_at) = ?", month, year], :order => "created_at DESC"
-  end
 end
