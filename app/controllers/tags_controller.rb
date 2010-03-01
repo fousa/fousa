@@ -26,8 +26,8 @@ class TagsController < ApplicationController
     end
 
     def initialize_tag
-      @title         = "blog"
-      @selected      = "blog"
+      @title         = "#{@tag.name} tag"
+      @selected      = "cloud"
       @keep_linking  = true
     	@admin_section = "overview"
     	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee ) + [@tag.name]).join(",")

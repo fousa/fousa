@@ -3,6 +3,8 @@ FOUSA.BE
 
 This is a public repository from my public website. I made this public so I can learn from you! I know my code is anything but perfect so I hope I can count on you guys to get it as close to perfect as possible!
 
+Website is now converted to work with Rails 3.0.0 beta.
+
 Let's begin
 -----------
 
@@ -33,8 +35,3 @@ Can I count on you?
 -------------------
 
 Can you help me to get my website's code better!
-
-Current problems
-----------------
-
-- submit to contact form

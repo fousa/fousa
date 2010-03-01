@@ -15,9 +15,9 @@ class ArchiveController < ApplicationController
   private
 
     def initialize_archive
-      @title         = "blog"
+      @title         = "archive"
       @selected      = "blog"
-      @keep_linking  = false
+      @keep_linking  = true
     	@admin_section = "overview"
     	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @posts.map(&:keywords).flatten).join(",")
     end
