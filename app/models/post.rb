@@ -42,7 +42,7 @@ class Post < ActiveRecord::Base
   end
 
   def keywords
-    tag_list.map
+    tag_list
   end
 
   def count_comments
