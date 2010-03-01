@@ -38,4 +38,3 @@ Current problems
 ----------------
 
 - submit to contact form
-- tag implementation

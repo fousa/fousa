@@ -32,7 +32,7 @@ class Admin::PostsController < Admin::AdminController
     else
       flash[:notice] = false
       flash[:error] = true
-      format.html { render :action => "new" }
+      render :action => :new
     end
   end
 

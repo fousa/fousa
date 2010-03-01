@@ -2,7 +2,7 @@ Fousa::Application.routes.draw do |map|
   resources :posts, :as => "blog" do
     resources :comments
   end
-  resources :site,    :as => "site"
+  resources :sites,   :as => "site"
   resources :archive, :as => "archive"
   resources :tags
   resources :search,  :as => "search"
@@ -17,11 +17,11 @@ Fousa::Application.routes.draw do |map|
 
   match "blog" => "posts#index", :as => :blog
 
-  match "about"       => "site#show",  :as => :about
-  match "contact"     => "site#new",   :as => :contact
-  match "services"    => "site#index", :as => :services
+  match "about"       => "sites#show",  :as => :about
+  match "contact"     => "sites#new",   :as => :contact
+  match "services"    => "sites#index", :as => :services
 
-  match "sitemap.xml" => "site#index", :format => "xml"
+  match "sitemap.xml" => "sites#index", :format => "xml"
 
   match "cloud" => "tags#index", :as => :cloud
 
