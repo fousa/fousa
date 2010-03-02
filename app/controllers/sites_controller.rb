@@ -26,7 +26,7 @@ class SitesController < ApplicationController
 
     @contact = Contact.new(params[:contact])
     if @contact.valid?
-      Mailer.deliver_contact(@contact)
+      Mailer.contact_notifier(@contact).deliver
       flash_notice
       redirect_to contact_url
     else

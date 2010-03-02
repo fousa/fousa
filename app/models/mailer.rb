@@ -1,17 +1,19 @@
 class Mailer < ActionMailer::Base
 
-  def contact(contact)
-    recipients  "jelle@fousa.be"
-    from        "#{contact.name} <#{contact.email}>"
-    subject     "Fousa :: Message from #{contact.name}"
-    body        :contact => contact
+  default :to => "jelle@fousa.be"
+
+  def contact_notifier(contact)
+    @contact = contact
+
+    mail :from =>    "#{contact.name} <#{contact.email}>",
+         :subject => "Fousa :: Contact message from #{contact.name}"
   end
 
-  def comment(comment)
-    recipients  "jelle@fousa.be"
-    from        "Fousa Commenting System <jelle@fousa.be>"
-    subject     "Fousa :: comment from #{comment.name}"
-    body        :comment => comment
+  def comment_notifier(comment)
+    @comment = comment
+
+    mail :from    => "Fousa Commenting System <jelle@fousa.be>",
+         :subject => "Fousa :: Post comment from #{comment.name}"
   end
 
 end

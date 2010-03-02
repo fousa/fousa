@@ -12,9 +12,11 @@ class CommentsController < ApplicationController
       @comment.website          = "http://www.fousa.be"
       @comment.snow             = "cold"
       @comment.personal_comment = true
+    else
+      @comment.personal_comment = false
     end
     if @comment.save
-      Mailer.deliver_comment(@comment) unless @comment.personal_comment
+      Mailer.comment_notifier(@comment).deliver unless @comment.personal_comment
       flash[:notice] = true
     else
       flash[:error] = true
