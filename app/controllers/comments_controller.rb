@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_filter :save_previous_url
 
   def create
-    @post = Post.where(:permalink => params[:post_id]).first
+    @post = Post.permalink(params[:post_id], admin?).first
     @comment = Comment.new(params[:comment].merge(:post => @post))
     if admin?
       @comment.name             = "Jelle Vandebeeck"

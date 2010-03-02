@@ -53,7 +53,7 @@
       %span.left_span
         =raw "created and designed by <a href=\"#{about_url}\"><span class=\"vcard\"><span class=\"fn\">Jelle Vandebeeck</span></span></a> and last edited about <abbr title=\"#{last_updated_sql(@last_updated_at)}\">#{last_updated(@last_updated_at)} ago</span></span><a href=\"http://feeds2.feedburner.com/fousa\" class=\"rss\">&nbsp;</a><a href=\"http://creativecommons.org/licenses/by/2.0/be/\" rel=\"nofollow\" class=\"cc\">&nbsp;</a></p>"
 
-    - if ENV['RAILS_ENV'] == "production" && !admin? && !@hide_google
+    - if Rails.env == "production" && !admin? && !@hide_google
       %script{ :type => "text/javascript" }
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

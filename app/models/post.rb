@@ -20,6 +20,12 @@ class Post < ActiveRecord::Base
   scope :posts,     active.where(:note => false)
   scope :scratches, active.where(:note => true)
 
+  scope :permalink, lambda { |permalink, admin| admin ? where(:permalink => permalink) : active.where(:permalink => permalink) }
+  scope :archive,   lambda { |year, month|
+    time = Date.new(year.to_i, month.to_i).to_time
+    active.where(:created_at => "'#{time}'".."'#{time.end_of_month}'").sorted
+  }
+
   class << self
 
     def archive_table
@@ -30,11 +36,6 @@ class Post < ActiveRecord::Base
         end
         yearly_archive.update({ year => monthly_archive })
       end
-    end
-
-    def archive(year, month)
-      time = Date.new(year.to_i, month.to_i).to_time
-      active.where(:created_at => "'#{time}'".."'#{time.end_of_month}'").sorted
     end
 
   end

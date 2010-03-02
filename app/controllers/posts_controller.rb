@@ -10,11 +10,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    if admin?
-      @post = Post.where(:permalink => params[:id]).first
-    else
-      @post = Post.active.where(:permalink => params[:id]).first
-    end
+    @post = Post.permalink(params[:id], admin?).first
 
     @comment = Comment.new({:post    => @post,
                             :snow    => flash[:snow_value],
