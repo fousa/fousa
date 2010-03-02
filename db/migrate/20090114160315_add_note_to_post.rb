@@ -2,6 +2,7 @@ class AddNoteToPost < ActiveRecord::Migration
   def self.up
     add_column :posts, :note, :boolean
     Post.update_attribute(:note, false)
+    ActiveRecord::Base.connection().update_sql("UPDATE posts SET note = f")
   end
 
   def self.down
