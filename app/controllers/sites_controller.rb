@@ -26,7 +26,7 @@ class SitesController < ApplicationController
 
     @contact = Contact.new(params[:contact])
     if @contact.valid?
-      FousaMailer.deliver_contact(@contact)
+      Mailer.deliver_contact(@contact)
       flash_notice
       redirect_to contact_url
     else

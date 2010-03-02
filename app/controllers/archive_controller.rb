@@ -19,7 +19,7 @@ class ArchiveController < ApplicationController
       @selected      = "blog"
       @keep_linking  = true
     	@admin_section = "overview"
-    	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @posts.map(&:keywords).flatten).join(",")
+    	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @posts.map(&:tag_list).flatten).join(",")
     end
 
 end

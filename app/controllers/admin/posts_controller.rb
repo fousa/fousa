@@ -3,11 +3,11 @@ class Admin::PostsController < Admin::AdminController
   def index
     initialize_posts
 
-    @posts           = Post.sorted.paginate :page => params[:page], :per_page => 10
+    @posts           = Post.sorted.paginate(:page => params[:page], :per_page => 10)
     @total_posts     = Post.posts.count
     @total_scratches = Post.scratches.count
     @total_hidden    = Post.inactive.count
-    @total_comments  = Comment.count(:all)
+    @total_comments  = Comment.count
   end
 
   def new

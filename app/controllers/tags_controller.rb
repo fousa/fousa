@@ -9,8 +9,8 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag   = Tag.find_by_name(params[:id])
-    @posts = Post.tagged_with(@tag).order("created_at desc")
+    @tag   = Tag.where(:name => params[:id])
+    @posts = Post.tagged_with(@tag).sorted
 
     initialize_tag
   end

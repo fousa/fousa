@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_filter :save_previous_url
 
   def create
-    @post = Post.find_by_permalink(params[:post_id])
+    @post = Post.where(:permalink => params[:post_id]).first
     @comment = Comment.new(params[:comment].merge(:post => @post))
     if admin?
       @comment.name             = "Jelle Vandebeeck"
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       @comment.personal_comment = true
     end
     if @comment.save
-      FousaMailer.deliver_comment(@comment) unless @comment.personal_comment
+      Mailer.deliver_comment(@comment) unless @comment.personal_comment
       flash[:notice] = true
     else
       flash[:error] = true

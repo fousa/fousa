@@ -5,7 +5,7 @@ class ScratchesController < ApplicationController
   def index
     initialize_scratches
 
-    @scratches = Post.scratches.paginate :page => params[:page], :per_page => 10
+    @scratches = Post.scratches.paginate(:page => params[:page], :per_page => 10)
   end
 
   private

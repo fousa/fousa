@@ -1,7 +1,7 @@
 module PostsHelper
 
   def format_comment_text(post)
-    size = post.count_comments
+    size = post.comments.count
     if size > 0
       " // #{size} #{size == 1 ? "comment" : "comment".pluralize}"
     end

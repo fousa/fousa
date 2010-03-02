@@ -11,9 +11,9 @@ class PostsController < ApplicationController
 
   def show
     if admin?
-      @post = Post.find_by_permalink(params[:id])
+      @post = Post.where(:permalink => params[:id]).first
     else
-      @post = Post.find_by_permalink(params[:id], :conditions => { :active => true })
+      @post = Post.active.where(:permalink => params[:id]).first
     end
 
     @comment = Comment.new({:post    => @post,
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
       @selected      = "blog"
       @keep_linking  = false
     	@admin_section = "overview"
-    	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @posts.map(&:keywords).flatten).join(",")
+    	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @posts.map(&:tag_list).flatten).join(",")
     end
 
     def initialize_post
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
       @keep_linking  = true
     	@admin_section = "detail"
     	@admin_post    = @post.id
-    	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @post.keywords).join(",")
+    	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @post.tag_list).join(",")
     end
 
 end
