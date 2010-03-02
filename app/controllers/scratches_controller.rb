@@ -1,6 +1,6 @@
 class ScratchesController < ApplicationController
 
-  before_filter :save_previous_url
+  before_filter :set_previous_url
 
   def index
     initialize_scratches

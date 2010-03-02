@@ -43,9 +43,8 @@
 
     = admin_links admin?, @admin_section || "no", @admin_post || ""
 
-    %div#content
-      = show_notice flash[:login_notice],  "You are now logged in to this website"
-      = show_notice flash[:logoff_notice], "You are now logged off from this website"
+    #content
+      = render :partial => "layouts/messages"
 
       = yield
 

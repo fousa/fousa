@@ -26,13 +26,9 @@ class Admin::PostsController < Admin::AdminController
     @post = Post.new(params[:post])
 
     if @post.save
-      flash[:notice] = true
-      flash[:error] = false
-      redirect_to admin_posts_path
+      redirect_to admin_posts_path, :notice => "The blog post was created"
     else
-      flash[:notice] = false
-      flash[:error] = true
-      render :action => :new
+      render :action => :new, :alert => "There was an error while trying to create a new blog post"
     end
   end
 
@@ -40,20 +36,17 @@ class Admin::PostsController < Admin::AdminController
     @post = Post.find(params[:id])
 
    if @post.update_attributes(params[:post])
-     flash[:notice] = true
-     flash[:error] = false
+     redirect_to admin_posts_path, :notice => "The blog post was edited"
    else
-     flash[:notice] = false
-     flash[:error] = true
+     render :edit, :alert => "There was an error while trying to edit the blog post"
    end
-   redirect_to admin_posts_path
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to admin_posts_path
+    redirect_to admin_posts_path, :notice => "The blog post was deleted"
   end
 
   private

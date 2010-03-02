@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
 
-  before_filter :save_previous_url
+  before_filter :set_previous_url
 
   def index
     @tags = Post.tag_counts_on :tags, :conditions => { :active => true }

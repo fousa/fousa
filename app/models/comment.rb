@@ -14,4 +14,17 @@ class Comment < ActiveRecord::Base
 
   scope :sorted, order("comments.created_at ASC")
 
+  before_validation :set_personal_comment_data
+
+  private
+
+    def set_personal_comment_data
+      if personal_comment
+        self.name    = "Jelle Vandebeeck"
+        self.email   = "jelle@fousa.be"
+        self.website = "http://www.fousa.be"
+        self.snow    = "cold"
+      end
+    end
+
 end

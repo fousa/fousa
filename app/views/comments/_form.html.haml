@@ -1,14 +1,6 @@
 - form_for @comment, :url => post_comments_path(@post.permalink) do |form|
 
-  = show_error flash[:error],      "Your comment submission failed due to some errors"
-  = show_error flash[:spam_error], "Your comment was marked as spam, we'll review it"
-
-  = show_notice flash[:notice],        "Your comment was successfully submitted"
-  = show_notice flash[:notice_delete], "The comment was successfully deleted"
-  = show_notice flash[:spam_notice],   "The comment was marked as spam"
-  = show_notice flash[:ham_notice],    "The comment was marked as ham"
-  = show_notice flash[:spam_error],    "The comment failed mark as spam"
-  = show_notice flash[:ham_error],     "The comment failed to mark as ham"
+  = render :partial => "layouts/messages"
 
   %table{ :cellspacing => "10px", :cellpadding => "0" }
     - if !admin?

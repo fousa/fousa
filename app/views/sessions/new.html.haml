@@ -6,9 +6,6 @@
 
   - form_tag sessions_path do
 
-    = show_error flash[:error_authentication], "Not authorized, please login"
-    = show_error flash[:error],                "You entered the wrong password"
-
     %table{ :cellspacing => "10px", :cellpadding => "0" }
       %tr
         %td

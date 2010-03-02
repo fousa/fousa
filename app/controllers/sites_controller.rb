@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_filter :save_previous_url
+  before_filter :set_previous_url
 
   def index
     initialize_services
@@ -25,13 +25,13 @@ class SitesController < ApplicationController
     initialize_contact
 
     @contact = Contact.new(params[:contact])
+
     if @contact.valid?
       Mailer.contact_notifier(@contact).deliver
-      flash_notice
-      redirect_to contact_url
+
+      redirect_to contact_url, :notice => "The form was successfully send to the fousa"
     else
-      flash_error
-      render :action => "new"
+      render :action => "new", :alert => "There was an error while trying to send the form"
     end
   end
 
@@ -55,16 +55,6 @@ class SitesController < ApplicationController
       @keep_linking  = false
       @keywords      = "fousa, blog, jelle vandebeeck, heverlee, twitter, dopplr, facebook, linked in, brightkite, flickr, delicious, last.fm, vimeo"
     	@admin_section = "services"
-    end
-
-    def flash_error
-      flash[:notice] = false
-      flash[:error] = true
-    end
-
-    def flash_notice
-      flash[:notice] = true
-      flash[:error] = false
     end
 
 end

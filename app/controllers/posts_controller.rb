@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_filter :authorize, :except => [ :index, :show ]
-  before_filter :save_previous_url
+  before_filter :set_previous_url
 
   def index
     @posts = Post.blog
@@ -12,8 +12,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.permalink(params[:id], admin?).first
 
-    @comment = Comment.new({:post    => @post,
-                            :snow    => flash[:snow_value],
+    @comment = Comment.new({:snow    => flash[:snow_value],
                             :name    => flash[:name_value],
                             :email   => flash[:email_value],
                             :website => flash[:website_value],

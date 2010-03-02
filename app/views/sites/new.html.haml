@@ -6,9 +6,6 @@
 
   - form_for @contact, :url => sites_path do |form|
 
-    = show_error  flash[:error],  "There was an error while trying to send the form"
-    = show_notice flash[:notice], "The form was successfully send to the fousa"
-
     %table{ :cellspacing => "10px", :cellpadding => "0" }
       %tr
         %td

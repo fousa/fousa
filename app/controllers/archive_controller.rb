@@ -1,6 +1,6 @@
 class ArchiveController < ApplicationController
 
-  before_filter :save_previous_url
+  before_filter :set_previous_url
 
   def index
     @selected_year  = params[:year]  ? params[:year]  : Time.now.strftime("%Y")
@@ -19,7 +19,7 @@ class ArchiveController < ApplicationController
       @selected      = "blog"
       @keep_linking  = true
     	@admin_section = "overview"
-    	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @posts.map(&:tag_list).flatten).join(",")
+    	@keywords      = (%w( fousa blog jelle\ vandebeeck heverlee) + @posts.map(&:tag_list)).join(",")
     end
 
 end

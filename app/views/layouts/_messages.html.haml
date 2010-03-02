@@ -1,0 +1,7 @@
+- if flash[:notice]
+  #success
+    %p= flash[:notice]
+
+- if flash[:alert]
+  #error
+    %p= flash[:alert]

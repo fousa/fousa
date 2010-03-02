@@ -9,33 +9,26 @@ class SessionsController < ApplicationController
   end
 
   def create
-    flash[:logoff_notice] = false
-    if CONFIG["fousa"]["password"] == params[:password]
-      flash[:login_notice] = true
-      flash[:error]        = false
-      session[:logged_in]  = true
-
+    if authorized_with(params[:password])
       if session[:previous_page]
         previous_uri = session[:previous_page]
         session[:previous_page] = nil
-        redirect_to previous_uri
+
+        redirect_to previous_uri, :notice => "You are now logged in to this website"
       else
-        redirect_to root_path
+        redirect_to root_path, :notice => "You are now logged in to this website"
       end
     else
       initialize_session
 
-      flash[:error] = true
-      redirect_to :action => "new"
+      redirect_to :action => "new", :alert => "You entered the wrong password"
     end
   end
 
   def destroy
     reset_session
-    flash[:login_notice]  = false
-    flash[:logoff_notice] = true
 
-    redirect_to login_path
+    redirect_to login_path, :notice => "You are now logged off from this website"
   end
 
   def show

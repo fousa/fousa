@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  before_filter :initialize_last_edited
+  before_filter :set_last_updated
+
+  def authorized_with(password)
+    session[:logged_in]  = CONFIG["fousa"]["password"] == password
+  end
 
   private
 
@@ -14,18 +18,15 @@ class ApplicationController < ActionController::Base
     end
 
     def authorize
-      unless admin?
-        flash[:error_authentication] = true
-        redirect_to login_url
-      end
+      redirect_to login_url, :alert => "Not authorized, please login" unless admin?
     end
 
-    def save_previous_url
+    def set_previous_url
       session[:previous_page] = request.request_uri
     end
 
-    def initialize_last_edited
-      @last_updated_at = Post.all(:limit => 1, :order => "updated_at DESC").first.updated_at
+    def set_last_updated
+      @last_updated_at = Post.order("updated_at DESC").first.updated_at
     end
 
 end

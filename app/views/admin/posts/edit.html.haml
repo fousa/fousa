@@ -6,9 +6,6 @@
 
   - form_for [:admin, @post] do |form|
 
-    = show_error  flash[:error],  "There was an error while trying to edit the blog post"
-    = show_notice flash[:notice], "The blog post was edited"
-
     %table{ :cellspacing => "10px", :cellpadding => "0" }
 
       = render :partial => "form", :locals => { :form => form, :post => @post }
