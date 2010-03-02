@@ -1,16 +1,18 @@
 class Post < ActiveRecord::Base
 
+  ### ASSOCIATIONS ###
+
   has_many :comments
 
   acts_as_taggable
 
-  validates_presence_of :title,     :if => :article?
-  validates_presence_of :permalink, :if => :article?
-  validates_presence_of :content
+  ### VALIDATIONS ###
 
-  validates_uniqueness_of :permalink, :if => :article?
+  validates :title,     :presence => true, :if => Proc.new { |p| not p.note }
+  validates :permalink, :presence => true, :if => Proc.new { |p| not p.note }, :uniqueness => true, :format => { :with => /^[a-z,0-9,-]*$/ }
+  validates :content,   :presence => true
 
-  validates_format_of :permalink, :with => /^[a-z,0-9,-]*$/, :if => :article?
+  ### SCOPES ###
 
   scope :sorted, order("posts.created_at DESC")
 
@@ -26,6 +28,8 @@ class Post < ActiveRecord::Base
     active.where(:created_at => "'#{time}'".."'#{time.end_of_month}'").sorted
   }
 
+  ### CLASS METHODS ###
+
   class << self
 
     def archive_table
@@ -38,10 +42,6 @@ class Post < ActiveRecord::Base
       end
     end
 
-  end
-
-  def article?
-    !note
   end
 
 end

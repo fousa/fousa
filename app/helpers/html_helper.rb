@@ -129,14 +129,6 @@ module HtmlHelper
     raw html
   end
 
-  def show_error(indicator, text)
-    raw "<div id='error'><p>#{text}</p></div>" if indicator
-  end
-
-  def show_notice(indicator, text)
-    raw "<div id='success'><p>#{text}</p></div>" if indicator
-  end
-
   def errored_textfield(field, indicator)
     html  = ""
     html << "<div class='error'>" if indicator
