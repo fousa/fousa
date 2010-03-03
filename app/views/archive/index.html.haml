@@ -11,7 +11,7 @@
     = render :partial => "posts/post", :locals => { :post => post, :container => false, :hightlight_query => "" }
 
 - if @posts.size == 0
-  %div#error
+  #error
     %p
       No post were written in
       = %w( JAN FEB MRT APR MAY JUN JUL AUG SEP OCT NOV DEC )[@selected_month.to_i-1]
