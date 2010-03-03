@@ -2,6 +2,10 @@
 
 = render :partial => "helpers/title", :locals => { :title => "blog", :link => root_url }
 
+- if @comment_show
+  %script
+    window.location.hash = "#commentinput";
+
 %div.date
   %abbr{ :title => last_updated_sql(@post.created_at) }
     %span.day

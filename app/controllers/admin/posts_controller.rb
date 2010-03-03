@@ -28,7 +28,8 @@ class Admin::PostsController < Admin::AdminController
     if @post.save
       redirect_to admin_posts_path, :notice => "The blog post was created"
     else
-      render :new, :alert => "There was an error while trying to create a new blog post"
+      flash[:alert] = "There was an error while trying to create a new blog post"
+      render :new
     end
   end
 
@@ -38,7 +39,8 @@ class Admin::PostsController < Admin::AdminController
    if @post.update_attributes(params[:post])
      redirect_to admin_posts_path, :notice => "The blog post was edited"
    else
-     render :edit, :alert => "There was an error while trying to edit the blog post"
+     flash[:alert] = "There was an error while trying to edit the blog post"
+     render :edit
    end
   end
 

@@ -564,6 +564,10 @@ form .meta {
 	border-left-width: 3px;
 }
 
+.error {
+	display: inline;
+}
+
 .error .field {
 	border-color: #FF887A;
 }

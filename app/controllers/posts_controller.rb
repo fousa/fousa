@@ -10,13 +10,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.permalink(params[:id], admin?).first
-
-    @comment = Comment.new({:snow    => flash[:snow_value],
-                            :name    => flash[:name_value],
-                            :email   => flash[:email_value],
-                            :website => flash[:website_value],
-                            :comment => flash[:comment_value]})
+    @post    = Post.permalink(params[:id], admin?).first
+    @comment = Comment.new
 
     initialize_post
   end

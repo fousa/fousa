@@ -15,19 +15,19 @@
     %label{ :for => "post_title" }
       title
   %td
-    = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:title, :class => 'field'), :indicator => post.errors.invalid?(:title) }
+    = form.text_field :title, :class => 'field'
 %tr#post_permalink_row
   %td
     %label{ :for => "post_permalink" }
       permalink
   %td
-    = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:permalink, :class => 'field'), :indicator => post.errors.invalid?(:permalink) }
+    = form.text_field :permalink, :class => 'field'
 %tr#post_tag_list_row
   %td
     %label{ :for => "post_tag_list" }
       tags
   %td
-    = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:tag_list, :class => 'field'), :indicator => post.errors.invalid?(:tag_list) }
+    = form.text_field :tag_list, :class => 'field'
     %span.meta
       comma seperated
 %tr
@@ -35,7 +35,7 @@
     %label{ :for => "post_content" }
       content
   %td
-    = render :partial => "helpers/textfield", :locals => { :field => form.text_area(:content, { :rows => 30, :cols => 60, :class => "field" }), :indicator => post.errors.invalid?(:content) }
+    = form.text_area :content, { :rows => 30, :cols => 60, :class => "field" }
 %tr
   %td
     %label{ :for => "post_created_at", :style => "padding-top: 0;" }

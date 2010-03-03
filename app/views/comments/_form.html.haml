@@ -1,6 +1,6 @@
 - form_for @comment, :url => post_comments_path(@post.permalink) do |form|
 
-  = render :partial => "layouts/messages"
+  = render :partial => "helpers/messages"
 
   %table{ :cellspacing => "10px", :cellpadding => "0" }
     - if !admin?
@@ -8,30 +8,32 @@
         %td
           = form.label :name
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:name, :class => 'field must_fill'), :indicator => flash[:name_error] }
+          = form.text_field :name, :class => 'field must_fill'
       %tr
         %td
           = form.label :email
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:email, :class => 'field'), :indicator => flash[:email_error] }
+          = form.text_field :email, :class => 'field'
           %span.meta
             will not be published / gravatar enabled
       %tr
         %td
           = form.label :website
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:website, :class => 'field'), :indicator => flash[:website_error] }
+          = form.text_field :website, :class => 'field'
       %tr
         %td
           %label{ :for => "snow" }
             is snow hot or cold?
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:snow, :class => 'field must_fill'), :indicator => flash[:snow_error] }
+          = form.text_field :snow, :class => 'field must_fill'
+          %span.meta
+            spam protection
     %tr
       %td
         = form.label :comment
       %td
-        = render :partial => "helpers/textfield", :locals => { :field => form.text_area(:comment, { :rows => 10, :cols => 45, :class => "field must_fill"}), :indicator => flash[:comment_error] }
+        = form.text_area :comment, { :rows => 10, :cols => 45, :class => "field must_fill"}
     %tr
       %td
         &nbsp;

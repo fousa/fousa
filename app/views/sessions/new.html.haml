@@ -4,7 +4,7 @@
   %p
     Please log in to admin this website.
 
-  - form_tag sessions_path do
+  - form_for @user, :url => sessions_path do |form|
 
     %table{ :cellspacing => "10px", :cellpadding => "0" }
       %tr
@@ -12,6 +12,6 @@
           %label{ :for => "password" }
             password
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => password_field_tag(:password, '', :class => 'field'), :indicator => flash[:alert] }
+          = form.password_field :password, :class => 'field'
 
 = render :partial => "helpers/top_bottom"

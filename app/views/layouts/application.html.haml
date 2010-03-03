@@ -47,7 +47,7 @@
     = render :partial => "helpers/admin_links", :locals => { :show => admin?, :type => @admin_section || "no", :post => @admin_post || "" }
 
     #content
-      = render :partial => "layouts/messages"
+      = render :partial => "helpers/messages"
 
       = yield
 

@@ -5,11 +5,15 @@ class SessionsController < ApplicationController
   def new
     initialize_session
 
+    @user        = User.new
     @hide_google = true
   end
 
   def create
-    if authorized_with(params[:password])
+    @user = User.new(params[:user])
+
+    if @user.valid?
+      session[:logged_in]  = true
       if session[:previous_page]
         previous_uri = session[:previous_page]
         session[:previous_page] = nil
@@ -19,9 +23,7 @@ class SessionsController < ApplicationController
         redirect_to root_path, :notice => "You are now logged in to this website"
       end
     else
-      initialize_session
-
-      render :new, :alert => "You entered the wrong password"
+      redirect_to login_path, :alert => "You entered the wrong password"
     end
   end
 

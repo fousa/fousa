@@ -7,10 +7,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_last_updated
 
-  def authorized_with(password)
-    session[:logged_in]  = CONFIG["fousa"]["password"] == password
-  end
-
   private
 
     def admin?

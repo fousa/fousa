@@ -12,31 +12,31 @@
           %label{ :for => "name" }
             name
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:name, :class => 'field must_fill'), :indicator => @contact.errors[:name].any? }
+          = form.text_field :name, :class => 'field must_fill'
       %tr
         %td
           %label{ :for => "email" }
             email
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:email, :class => 'field must_fill'), :indicator => @contact.errors[:email].any? }
+          = form.text_field :email, :class => 'field must_fill'
       %tr
         %td
           %label{ :for => "website" }
             website
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:website, :class => 'field'), :indicator => @contact.errors[:website].any? }
+          = form.text_field :website, :class => 'field'
       %tr
         %td
           %label{ :for => "snow" }
             is snow hot or cold?
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:snow, :class => 'field must_fill'), :indicator => @contact.errors[:snow].any? }
+          = form.text_field :snow, :class => 'field must_fill'
       %tr
         %td
           %label{ :for => "content" }
             your words
         %td
-          = render :partial => "helpers/textfield", :locals => { :field => form.text_area(:content, { :rows => 10, :cols => 45, :class => "field must_fill" }), :indicator => @contact.errors[:content].any? }
+          = form.text_area :content, { :rows => 10, :cols => 45, :class => "field must_fill" }
       %tr
         %td
           &nbsp;
