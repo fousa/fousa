@@ -1,0 +1,9 @@
+- if selected_title == checked_title
+  %li#selected
+    - if keep_linking
+      = link_to checked_title, checked_link
+    - else
+      checked_title
+- else
+  %li
+    = link_to checked_title, checked_link

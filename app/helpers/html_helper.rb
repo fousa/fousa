@@ -1,140 +1,47 @@
 module HtmlHelper
 
-  def title_tag(subpage_title, homepage_link=nil)
-    html = "<h1>"
-    if homepage_link.nil?
-      html << "fousa" if homepage_link.nil?
-    else
-      html << link_to("fousa", root_path)
-    end
-    html << "<span>#{subpage_title}</span>"
-    html << "</h1>"
-    raw html
+  def title_tag(title, link=nil)
+    render :partial => "helpers/title", :locals => { :title => title, :link => link }
   end
 
   def admin_links(show=false, type="no", post=nil)
-    return if !show
-
-    html = "<ul class='admin'>"
-    if type == "overview"
-      html << "<li>"
-      html << link_to("new", new_admin_post_path)
-      html << "</li><li>"
-      html << link_to("list", admin_posts_path)
-      html << "</li>"
-    elsif type == "new"
-      html << "<li>"
-      html << link_to("new", new_admin_post_path)
-      html << "</li>"
-    elsif type == "overview_no_new"
-      html << "<li>"
-      html << link_to("list", admin_posts_path)
-      html << "</li>"
-    elsif type == "detail"
-      html << "<li>"
-      html << link_to("new", new_admin_post_path)
-      html << "</li><li>"
-      html << link_to("edit", edit_admin_post_path(post))
-      html << "</li><li>"
-      html << link_to("list", admin_posts_path)
-      html << "</li>"
-    elsif type == "about"
-      html << "<li>"
-      html << link_to("edit", edit_admin_post_path(post))
-      html << "</li>"
-    end
-    html << "<li>"
-    html << link_to("logoff", logoff_path)
-    html << "</li>"
-    html << "</ul>"
-    raw html
+    render :partial => "helpers/admin_links", :locals => { :show => show, :type => type, :post => post }
   end
 
   def archive_top_tag(link)
-    tag  = "<p id='headerlink'>"
-    tag << "Check out the "
-    tag << link_to(raw("archive &rarr;"), link)
-    tag << "</p>"
-    raw tag
+    render :partial => "helpers/archive_top", :locals => { :link => link }
   end
 
   def blog_top_tag(link)
-    tag  = "<p id='headerlink'>"
-    tag << link_to(raw("&larr; back"), link)
-    tag << " to the blog"
-    tag << "</p>"
-    raw tag
+    render :partial => "helpers/blog_top", :locals => { :link => link }
   end
 
   def paginate_top_tag(posts)
-    tag = "<p id='headerlink'>"
-    tag << will_paginate(posts).to_s
-    tag << "</p>"
-    raw tag
+    render :partial => "helpers/paginate_top", :locals => { :posts => posts }
   end
 
   def paginate_bottom_tag(posts)
-    tag  ="<p id='more'>"
-    tag << "<span class='left_align'>"
-    tag << "go to the "
-    tag << raw(link_to(raw("top &uarr;"), "#menu"))
-    tag << "</span>"
-    tag << will_paginate(posts).to_s
-    tag << "</p>"
-    raw tag
+    render :partial => "helpers/paginate_bottom", :locals => { :posts => posts }
   end
 
   def archive_bottom_tag(link)
-    tag = "<p id='more'>"
-    tag << "<span class='left_align'>go to the "
-    tag << link_to(raw("top &uarr;"), "#menu")
-    tag << "</span>"
-    tag << "Check out the "
-    tag << link_to(raw("archive &rarr;"), link)
-    tag << "</p>"
-    raw tag
+    render :partial => "helpers/archive_bottom", :locals => { :link => link }
   end
 
   def blog_bottom_tag(link)
-    tag  = "<p id='more'>"
-    tag << "<span class='left_align'>go to the "
-    tag << link_to(raw("top &uarr;"), "#menu")
-    tag << "</span>"
-    tag << link_to(raw("&larr; back"), link)
-    tag << " to the blog</p>"
-    raw tag
+    render :partial => "helpers/blog_bottom", :locals => { :link => link }
   end
 
   def top_bottom_tag
-    tag  = "<p id='more'>go to the "
-    tag << link_to(raw("&uarr;"), "#menu")
-    tag << "</p>"
-    raw tag
+    render :partial => "helpers/top_bottom"
   end
 
   def li_tag(selected_title, checked_title, checked_link, keep_linking = false)
-    if selected_title == checked_title
-      html  = "<li id=\"selected\">"
-      if keep_linking
-        html << link_to(checked_title, checked_link)
-      else
-        html << checked_title
-      end
-      html << "</li>"
-    else
-      html  = "<li>"
-      html << link_to(checked_title, checked_link)
-      html << "</li>"
-    end
-    raw html
+    render :partial => "helpers/menu_item", :locals => { :selected_title => selected_title, :checked_title => checked_title, :checked_link => checked_link, :keep_linking => keep_linking }
   end
 
   def errored_textfield(field, indicator)
-    html  = ""
-    html << "<div class='error'>" if indicator
-		html << field
-		html << "</div>" if indicator
-	  raw html
+    render :partial => "helpers/textfield", :locals => { :field => field, :indicator => indicator }
   end
 
 end

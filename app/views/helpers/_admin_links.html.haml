@@ -1,0 +1,25 @@
+- if show
+  %ul.admin
+    - if type == "overview"
+      %li
+        = link_to "new", new_admin_post_path
+      %li
+        = link_to "list", admin_posts_path
+    - elsif type == "new"
+      %li
+        = link_to "new", new_admin_post_path
+    - elsif type == "overview_no_new"
+      %li
+        = link_to "list", admin_posts_path
+    - elsif type == "detail"
+      %li
+        = link_to "new", new_admin_post_path
+      %li
+        = link_to "edit", edit_admin_post_path(post)
+      %li
+        = link_to "list", admin_posts_path
+    - elsif type == "about"
+      %li
+        = link_to "edit", edit_admin_post_path(post)
+    %li
+      = link_to "logoff", logoff_path

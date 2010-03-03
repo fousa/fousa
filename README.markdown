@@ -35,3 +35,9 @@ Can I count on you?
 -------------------
 
 Can you help me to get my website's code better!
+
+TO FIX
+======
+
+- error handling on textfields
+- view helpers in partials

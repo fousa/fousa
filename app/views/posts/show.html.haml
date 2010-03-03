@@ -12,7 +12,7 @@
   %h2
     =h @post.title
 
-  = format_tag_list @post
+  = render :partial => "helpers/tag_list", :locals => { :post => @post }
 
   %div.permalink_content
     = raw @post.content
