@@ -18,7 +18,7 @@
           %label{ :for => "email" }
             email
         %td
-          = errored_textfield form.text_field(:email, :class => 'field'), @contact.errors[:email].any?
+          = errored_textfield form.text_field(:email, :class => 'field must_fill'), @contact.errors[:email].any?
       %tr
         %td
           %label{ :for => "website" }
@@ -30,7 +30,7 @@
           %label{ :for => "snow" }
             is snow hot or cold?
         %td
-          = errored_textfield form.text_field(:snow, :class => 'field'), @contact.errors[:snow].any?
+          = errored_textfield form.text_field(:snow, :class => 'field must_fill'), @contact.errors[:snow].any?
       %tr
         %td
           %label{ :for => "content" }

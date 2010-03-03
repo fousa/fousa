@@ -16,18 +16,4 @@
         %td
           = form.submit "Save", :class => "button"
 
-%script{ :type => "text/javascript" }
-  function toggleNote(checkbox) {
-  if (checkbox.checked) {
-  $('post_title_row').style.display = "none"
-  $('post_permalink_row').style.display = "none"
-  $('post_tag_list_row').style.display = "none"
-  } else {
-  $('post_title_row').style.display = "table-row"
-  $('post_permalink_row').style.display = "table-row"
-  $('post_tag_list_row').style.display = "table-row"
-  }
-  }
-  toggleNote(document.getElementById('post_note'))
-
 = top_bottom_tag
