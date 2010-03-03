@@ -1,6 +1,6 @@
-= archive_top_tag archives_url
+= render :partial => "helpers/archive_top", :locals => { :link => archives_url }
 
-= title_tag "blog"
+= render :partial => "helpers/title", :locals => { :title => "blog", :link => nil }
 
 - previous_year = 0
 - @posts.each do |post|
@@ -15,4 +15,4 @@
 
   - previous_year = post.created_at.year
 
-= archive_bottom_tag archives_url
+= render :partial => "helpers/archive_bottom", :locals => { :link => archives_url }

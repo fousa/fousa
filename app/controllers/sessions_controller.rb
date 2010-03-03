@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     else
       initialize_session
 
-      redirect_to :action => "new", :alert => "You entered the wrong password"
+      render :new, :alert => "You entered the wrong password"
     end
   end
 

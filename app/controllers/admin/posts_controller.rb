@@ -28,7 +28,7 @@ class Admin::PostsController < Admin::AdminController
     if @post.save
       redirect_to admin_posts_path, :notice => "The blog post was created"
     else
-      render :action => :new, :alert => "There was an error while trying to create a new blog post"
+      render :new, :alert => "There was an error while trying to create a new blog post"
     end
   end
 

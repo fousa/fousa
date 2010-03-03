@@ -37,14 +37,14 @@
             = text_field_tag :search, '', :value => @query,  :size => 10
             = image_submit_tag "/images/search.png", :id => "do_search"
 
-      = li_tag @selected, "blog",      blog_path,      @keep_linking
-      = li_tag @selected, "scratches", scratches_path, @keep_linking
-      = li_tag @selected, "cloud",     cloud_path,     @keep_linking
-      = li_tag @selected, "services",  services_path,  @keep_linking
-      = li_tag @selected, "contact",   contact_path,   @keep_linking
-      = li_tag @selected, "about",     about_path,     @keep_linking
+      = render :partial => "helpers/menu_item", :locals => { :selected_title => @selected, :checked_title => "blog", :checked_link => blog_path, :keep_linking => @keep_linking }
+      = render :partial => "helpers/menu_item", :locals => { :selected_title => @selected, :checked_title => "scratches", :checked_link => scratches_path, :keep_linking => @keep_linking }
+      = render :partial => "helpers/menu_item", :locals => { :selected_title => @selected, :checked_title => "cloud", :checked_link => cloud_path, :keep_linking => @keep_linking }
+      = render :partial => "helpers/menu_item", :locals => { :selected_title => @selected, :checked_title => "services", :checked_link => services_path, :keep_linking => @keep_linking }
+      = render :partial => "helpers/menu_item", :locals => { :selected_title => @selected, :checked_title => "contact", :checked_link => contact_path, :keep_linking => @keep_linking }
+      = render :partial => "helpers/menu_item", :locals => { :selected_title => @selected, :checked_title => "about", :checked_link => about_path, :keep_linking => @keep_linking }
 
-    = admin_links admin?, @admin_section || "no", @admin_post || ""
+    = render :partial => "helpers/admin_links", :locals => { :show => admin?, :type => @admin_section || "no", :post => @admin_post || "" }
 
     #content
       = render :partial => "layouts/messages"

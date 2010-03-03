@@ -1,4 +1,4 @@
-= title_tag "login"
+= render :partial => "helpers/title", :locals => { :title => "login", :link => nil }
 
 %div.input
   %p
@@ -12,6 +12,6 @@
           %label{ :for => "password" }
             password
         %td
-          = errored_textfield password_field_tag(:password, '', :class => 'field'), flash[:error]
+          = render :partial => "helpers/textfield", :locals => { :field => password_field_tag(:password, '', :class => 'field'), :indicator => flash[:alert] }
 
-= top_bottom_tag
+= render :partial => "helpers/top_bottom"

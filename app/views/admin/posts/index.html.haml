@@ -1,6 +1,6 @@
-= paginate_top_tag @posts
+= render :partial => "helpers/paginate_top", :locals => { :posts => @posts }
 
-= title_tag "posts:all"
+= render :partial => "helpers/title", :locals => { :title => "posts:all", :link => nil }
 
 %p#criteria
   totals
@@ -46,4 +46,4 @@
       %td{ :style => "width: 4em; text-align: right;",                 :valign => "top" }
         = link_to 'remove', admin_post_path(post), :confirm => 'Are you sure?', :method => :delete
 
-= paginate_bottom_tag @posts
+= render :partial => "helpers/paginate_bottom", :locals => { :posts => @posts }

@@ -1,4 +1,4 @@
-= title_tag "admin/post:edit"
+= render :partial => "helpers/title", :locals => { :title => "admin/post:edit", :link => nil }
 
 %div.input
   %p
@@ -16,4 +16,4 @@
         %td
           = form.submit "Save", :class => "button"
 
-= top_bottom_tag
+= render :partial => "helpers/top_bottom"

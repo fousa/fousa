@@ -1,4 +1,4 @@
-= title_tag "cloud", root_url
+= render :partial => "helpers/title", :locals => { :title => "cloud", :link => root_url }
 
 %p#info_line
   This is a summary of all the tags used on this blog.
@@ -13,4 +13,4 @@
     %p
       No tags were used in the blog posts
 
-= top_bottom_tag
+= render :partial => "helpers/top_bottom"

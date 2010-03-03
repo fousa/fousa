@@ -1,6 +1,6 @@
-= blog_top_tag root_url
+= render :partial => "helpers/blog_top", :locals => { :link => root_url }
 
-= title_tag "archive", root_url
+= render :partial => "helpers/title", :locals => { :title => "archive", :link => root_url }
 
 = render :partial => "selector", :locals => { :archive => @archive, :current_month => @selected_month, :current_year => @selected_year }
 
@@ -17,4 +17,4 @@
       = %w( JAN FEB MRT APR MAY JUN JUL AUG SEP OCT NOV DEC )[@selected_month.to_i-1]
       = @selected_year
 
-= blog_bottom_tag root_url
+= render :partial => "helpers/blog_bottom", :locals => { :link => root_url }

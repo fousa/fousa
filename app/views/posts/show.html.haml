@@ -1,5 +1,6 @@
-= blog_top_tag root_url
-= title_tag "blog", root_url
+= render :partial => "helpers/blog_top", :locals => { :link => root_url }
+
+= render :partial => "helpers/title", :locals => { :title => "blog", :link => root_url }
 
 %div.date
   %abbr{ :title => last_updated_sql(@post.created_at) }
@@ -26,4 +27,4 @@
 - @post.comments.sorted.each do |comment|
   = render :partial => "comments/comment", :locals => { :comment => comment }
 
-= blog_bottom_tag root_url
+= render :partial => "helpers/blog_bottom", :locals => { :link => root_url }

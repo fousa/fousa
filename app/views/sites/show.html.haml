@@ -1,4 +1,4 @@
-= title_tag "about", root_path
+= render :partial => "helpers/title", :locals => { :title => "about", :link => root_path }
 
 %div{ :class => "mytext image_right" }
   %img{ :src => "/images/about/genious.jpg", :alt => "" }
@@ -20,4 +20,4 @@
     = link_to "Simon", "http://www.suffix.be"
     )
 
-= top_bottom_tag
+= render :partial => "helpers/top_bottom"

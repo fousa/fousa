@@ -1,4 +1,4 @@
-= title_tag "404", root_url
+= render :partial => "helpers/title", :locals => { :title => "404", :link => root_url }
 
 %div#error_page
   %p#info_line
@@ -11,4 +11,4 @@
     %br
     You can search this website by using the above search functionality
 
-= top_bottom_tag
+= render :partial => "helpers/top_bottom"

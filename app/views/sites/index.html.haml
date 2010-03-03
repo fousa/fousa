@@ -1,4 +1,4 @@
-= title_tag "services", root_url
+= render :partial => "helpers/title", :locals => { :title => "service", :link => root_url }
 
 = render :partial => "service", :locals => { :name => "Twitter",    :icon_text => "t",      :link => "http://www.twitter.com/fousa",               :text => "Check out my tweets!" }
 = render :partial => "service", :locals => { :name => "Dailybooth", :icon_text => "D",      :link => "http://www.dailybooth.com/fousa",            :text => "Here you can find some stupid pictures I took using the awesome Dailybooth service!" }
@@ -10,4 +10,4 @@
 = render :partial => "service", :locals => { :name => "LinkedIn",  :icon_text => "in",     :link => "http://www.linkedin.com/in/jellevandebeeck", :text => "Check out my professional data!" }
 = render :partial => "service", :locals => { :name => "Facebook",   :icon_text => "f",      :link => "http://www.facebook.com/fousa",              :text => "Just to keep up with my good old friends!" }
 
-= top_bottom_tag
+= render :partial => "helpers/top_bottom"

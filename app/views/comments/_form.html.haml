@@ -8,30 +8,30 @@
         %td
           = form.label :name
         %td
-          = errored_textfield form.text_field(:name, :class => 'field must_fill'), flash[:name_error]
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:name, :class => 'field must_fill'), :indicator => flash[:name_error] }
       %tr
         %td
           = form.label :email
         %td
-          = errored_textfield form.text_field(:email, :class => 'field'), flash[:email_error]
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:email, :class => 'field'), :indicator => flash[:email_error] }
           %span.meta
             will not be published / gravatar enabled
       %tr
         %td
           = form.label :website
         %td
-          = errored_textfield form.text_field(:website, :class => 'field'), flash[:website_error]
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:website, :class => 'field'), :indicator => flash[:website_error] }
       %tr
         %td
           %label{ :for => "snow" }
             is snow hot or cold?
         %td
-          = errored_textfield form.text_field(:snow, :class => 'field must_fill'), flash[:snow_error]
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:snow, :class => 'field must_fill'), :indicator => flash[:snow_error] }
     %tr
       %td
         = form.label :comment
       %td
-        = errored_textfield form.text_area(:comment, { :rows => 10, :cols => 45, :class => "field must_fill"}), flash[:comment_error]
+        = render :partial => "helpers/textfield", :locals => { :field => form.text_area(:comment, { :rows => 10, :cols => 45, :class => "field must_fill"}), :indicator => flash[:comment_error] }
     %tr
       %td
         &nbsp;

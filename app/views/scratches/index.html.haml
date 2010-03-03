@@ -1,8 +1,8 @@
-= paginate_top_tag @scratches
+= render :partial => "helpers/paginate_top", :locals => { :posts => @scratches }
 
-= title_tag "scratches"
+= render :partial => "helpers/title", :locals => { :title => "scratches", :link => nil }
 
-%div#notes_container
+#notes_container
   - previous_year = 0
   - @scratches.each do |scratch|
     - if previous_year != scratch.created_at.year && previous_year != 0
@@ -11,4 +11,4 @@
     = render :partial => "scratch", :locals => { :scratch => scratch, :hightlight_query => "" }
     - previous_year = scratch.created_at.year
 
-= paginate_bottom_tag @scratches
+= render :partial => "helpers/paginate_bottom", :locals => { :posts => @scratches }

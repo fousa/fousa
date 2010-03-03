@@ -1,6 +1,7 @@
-= paginate_top_tag @posts if @posts.size > 0
+- if @posts.size > 0
+  = render :partial => "helpers/paginate_top", :locals => { :posts => @posts }
 
-= title_tag "search", root_url
+= render :partial => "helpers/title", :locals => { :title => "search", :link => root_url }
 
 %p#criteria
   Search query:
@@ -9,13 +10,11 @@
 
 - if @posts.size > 0
   - @posts.each do |post|
-    - if post.note?
-      = render :partial => "scratches/scratch", :locals => { :scratch => post, :container => false, :hightlight_query => @query }
-    - else
-      = render :partial => "posts/post", :locals => { :post => post, :container => false, :hightlight_query => @query }
+    = render :partial => post.note? ? "scratches/scratch" : "posts/post", :locals => { :scratch => post, :container => false, :hightlight_query => @query }
 - else
-  %div#error
+  #error
     %p
       = @query.blank? ? "No search query was given" : "The search query wasn't found in the blog posts"
 
-= paginate_bottom_tag @posts if @posts.size > 0
+- if @posts.size > 0
+  = render :partial => "helpers/paginate_bottom", :locals => { :posts => @posts }

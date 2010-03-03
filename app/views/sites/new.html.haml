@@ -1,4 +1,4 @@
-= title_tag "contact", root_url
+= render :partial => "helpers/title", :locals => { :title => "contact", :link => root_url }
 
 %div.input
   %p#info_line
@@ -12,35 +12,35 @@
           %label{ :for => "name" }
             name
         %td
-          = errored_textfield form.text_field(:name, :class => 'field must_fill'), @contact.errors[:name].any?
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:name, :class => 'field must_fill'), :indicator => @contact.errors[:name].any? }
       %tr
         %td
           %label{ :for => "email" }
             email
         %td
-          = errored_textfield form.text_field(:email, :class => 'field must_fill'), @contact.errors[:email].any?
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:email, :class => 'field must_fill'), :indicator => @contact.errors[:email].any? }
       %tr
         %td
           %label{ :for => "website" }
             website
         %td
-          = errored_textfield form.text_field(:website, :class => 'field'), @contact.errors[:website].any?
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:website, :class => 'field'), :indicator => @contact.errors[:website].any? }
       %tr
         %td
           %label{ :for => "snow" }
             is snow hot or cold?
         %td
-          = errored_textfield form.text_field(:snow, :class => 'field must_fill'), @contact.errors[:snow].any?
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_field(:snow, :class => 'field must_fill'), :indicator => @contact.errors[:snow].any? }
       %tr
         %td
           %label{ :for => "content" }
             your words
         %td
-          = errored_textfield form.text_area(:content, { :rows => 10, :cols => 45, :class => "field must_fill" }), @contact.errors[:content].any?
+          = render :partial => "helpers/textfield", :locals => { :field => form.text_area(:content, { :rows => 10, :cols => 45, :class => "field must_fill" }), :indicator => @contact.errors[:content].any? }
       %tr
         %td
           &nbsp;
         %td
           = form.submit "Send", :class => "button"
 
-= top_bottom_tag
+= render :partial => "helpers/top_bottom"

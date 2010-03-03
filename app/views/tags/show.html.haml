@@ -1,5 +1,6 @@
-= blog_top_tag root_url
-= title_tag "tag", root_url
+= render :partial => "helpers/blog_top", :locals => { :link => root_url }
+
+= render :partial => "helpers/title", :locals => { :title => "tag", :link => root_url }
 
 %p#criteria
   Current tag:
@@ -14,4 +15,4 @@
   = render :partial => "posts/post", :locals => { :post => post, :container => false, :hightlight_query => "" }
   - previous_year = post.created_at.year
 
-= blog_bottom_tag root_url
+= render :partial => "helpers/blog_bottom", :locals => { :link => root_url }
