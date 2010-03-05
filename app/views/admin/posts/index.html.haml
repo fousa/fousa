@@ -32,7 +32,7 @@
           = link_to post.title, permalink_url(post.permalink)
       %td{ :style => "width: 10em; text-align: right;", :valign => "top" }
         =h time_ago_in_words(post.created_at)
-        ago
+        = post.created_at <= Time.now ? "ago" : "to go"
       %td{ :style => "width: 2em; text-align: right;",                 :valign => "top" }
         =h post.comments.size
       %td{ :style => "width: 2em; text-align: right; color: #FF887A;", :valign => "top" }
