@@ -10,7 +10,7 @@
 
 - if @posts.size > 0
   - @posts.each do |post|
-    = render :partial => post.note? ? "scratches/scratch" : "posts/post", :locals => { :scratch => post, :container => false, :hightlight_query => @query }
+    = render :partial => post.note? ? "scratches/scratch" : "posts/post", :locals => { :post => post, :container => false, :hightlight_query => @query }
 - else
   #error
     %p

@@ -9,7 +9,7 @@
       = post.created_at.year
 
   - if post.note?
-    = render :partial => "scratches/scratch", :locals => { :scratch => post, :hightlight_query => "" }
+    = render :partial => "scratches/scratch", :locals => { :post => post, :hightlight_query => "" }
   - else
     = render :partial => "post", :locals => { :post => post, :container => false, :hightlight_query => "" }
 

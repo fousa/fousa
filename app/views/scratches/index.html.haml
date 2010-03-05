@@ -8,7 +8,7 @@
     - if previous_year != scratch.created_at.year && previous_year != 0
       %p.year_separator
         = scratch.created_at.year
-    = render :partial => "scratch", :locals => { :scratch => scratch, :hightlight_query => "" }
+    = render :partial => "scratch", :locals => { :post => scratch, :hightlight_query => "" }
     - previous_year = scratch.created_at.year
 
 = render :partial => "helpers/paginate_bottom", :locals => { :posts => @scratches }
