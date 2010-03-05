@@ -40,7 +40,7 @@
       %td{ :style => "width: 4em; text-align: right;",                 :valign => "top" }
         =h post.note ? "note" : "article"
       %td{ :style => "width: 4em; text-align: right;",                 :valign => "top" }
-        =h post.active ? "show" : "hide"
+        =h post.created_at <= Time.now ? "show" : "hide"
       %td{ :style => "width: 3em; text-align: right;",                 :valign => "top" }
         = link_to 'edit', edit_admin_post_path(post)
       %td{ :style => "width: 4em; text-align: right;",                 :valign => "top" }

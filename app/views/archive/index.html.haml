@@ -6,7 +6,7 @@
 
 - @posts.each do |post|
   - if post.note?
-    = render :partial => "scratches/scratch", :locals => { :scratch => post, :hightlight_query => "" }
+    = render :partial => "scratches/scratch", :locals => { :post => post, :hightlight_query => "" }
   - else
     = render :partial => "posts/post", :locals => { :post => post, :container => false, :hightlight_query => "" }
 

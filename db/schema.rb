@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100217140626) do
+ActiveRecord::Schema.define(:version => 20100305211433) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -20,25 +20,16 @@ ActiveRecord::Schema.define(:version => 20100217140626) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "personal_comment"
-    t.boolean  "spam"
   end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.string   "permalink"
     t.text     "content"
-    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_tag_list"
     t.boolean  "note"
-  end
-
-  create_table "simple_captcha_data", :force => true do |t|
-    t.string   "key",        :limit => 40
-    t.string   "value",      :limit => 6
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|

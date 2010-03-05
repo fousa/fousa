@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_filter :set_previous_url
 
   def index
-    @tags = Post.tag_counts_on :tags, :conditions => { :active => true }
+    @tags = Post.tag_counts_on :tags, :conditions => ["posts.created_at <= ?", Time.now]
 
     initialize_cloud
   end
