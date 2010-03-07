@@ -16,8 +16,8 @@ class Post < ActiveRecord::Base
 
   scope :sorted, order("posts.created_at DESC")
 
-  scope :active,    lambda { where("created_at <= ?", Time.now).sorted }
-  scope :inactive,  lambda { where("created_at > ?",  Time.now).sorted }
+  scope :active,    lambda { where("created_at <= ?", Time.zone.now).sorted }
+  scope :inactive,  lambda { where("created_at > ?",  Time.zone.now).sorted }
   scope :blog,      active.limit(10)
   scope :posts,     active.where(:note => false)
   scope :scratches, active.where(:note => true)

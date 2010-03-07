@@ -3,8 +3,8 @@ class ArchiveController < ApplicationController
   before_filter :set_previous_url
 
   def index
-    @selected_year  = params[:year]  ? params[:year]  : Time.now.strftime("%Y")
-    @selected_month = params[:month] ? params[:month] : Time.now.strftime("%m")
+    @selected_year  = params[:year]  ? params[:year]  : Time.zone.now.strftime("%Y")
+    @selected_month = params[:month] ? params[:month] : Time.zone.now.strftime("%m")
 
     @posts   = Post.archive(@selected_year, @selected_month)
     @archive = Post.archive_table
