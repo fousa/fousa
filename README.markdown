@@ -38,6 +38,4 @@ Can you help me to get my website's code better!
 
 TO FIX
 ======
-- set default date when adding new article/note
-- When editing a note the obsolete textfields are shown
 - redesign style for article
