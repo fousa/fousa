@@ -35,7 +35,3 @@ Can I count on you?
 -------------------
 
 Can you help me to get my website's code better!
-
-TO FIX
-======
-- redesign style for article

@@ -33,19 +33,19 @@ body {
 
 #menu li {
 	display: inline;
-	margin: 0 10px;
-	padding-bottom: 4px;
+	margin: 0 5px;
+	padding-bottom: 8px;
 }
 
 #menu #selected {
 	color: #eee;
-	font-size: 140%;
-	border-bottom: 10px solid #676767;
+	font-size: 100%;
+	border-bottom: 5px solid #676767;
 }
 
 #menu #selected a {
 	font-size: 100%;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 #menu #search_menu {
@@ -60,7 +60,7 @@ body {
 #menu #search {
 	outline: none;
 	padding: 2px 4px;
-	font-size: 140%;
+	font-size: 100%;
 	color: #676767;
 	background-color: #eee;
 	border: 0;
@@ -74,7 +74,7 @@ body {
 
 #menu a {
 	color: #eee;
-	font-size: 140%;
+	font-size: 100%;
 	text-decoration: none;
 }
 
@@ -88,10 +88,16 @@ body {
 	height: 1%;
 }
 
+#inner-content {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #headerlink {
 	float: right;
-	margin: 2.5em 0 0 0;
-	font-size: 140%;
+	margin: 5em 0 0 0;
+	font-size: 100%;
 	color: #676767;
 }
 
@@ -107,10 +113,11 @@ body {
 
 h1 {
 	padding: 20px 0 0 0;
-	margin:  0 0 20px 0;
+	margin:  0 0 50px 0;
 	font-size: 500%;
 	font-weight: lighter;
 	color: #FF9900;
+	font-family: Georgia;
 }
 
 h1 a {
@@ -136,6 +143,7 @@ h1 span {
 #selector th {
 	padding: 8px 0;
 	width: 7.6%;
+	font-size: 80%;
 	text-align: center;
 	color: #eee;
 	font-weight: normal;
@@ -143,6 +151,7 @@ h1 span {
 
 #selector td {
 	width: 7.6%;
+	font-size: 80%;
 	color: #eee;
 	text-align: center;
 }
@@ -173,6 +182,7 @@ h1 span {
 	float: left;
 	width: 3em;
 	padding: 5px 10px;
+	font-size: 70%;
 	color: #fff;
 	background: #99CC66 url(/images/datebox.png) top left no-repeat;
 }
@@ -292,7 +302,7 @@ h1 span {
 	color: #98ca65;
 	text-align: center;
 	background: white url(/images/separator.png) bottom left repeat-x;
-	font-size: 200%;
+	font-size: 150%;
 	font-style: italic;
 	font-family: georgia, serif;
 }
@@ -327,8 +337,8 @@ h1 span {
 .service h2,
 .blog h2 {
 	padding: 0 0 0 0;
-	font-family: "Century Gothic", "AppleGothic", sans-serif;
-	font-size: 200%;
+	font-family: Georgia ,serif;
+	font-size: 150%;
 	font-weight: normal;
 	color: #676767;
 }
@@ -342,10 +352,11 @@ h1 span {
 }
 
 h3 {
-	font-size: 150%;
-	font-family: "Century Gothic", "AppleGothic", sans-serif;
-	color: #676767;
-	margin: 20px 0;
+	font-size: 170%;
+	font-family: Georgia, serif;
+	color: #ccc;
+	margin: 20px 0 20px -50px;
+	font-weight: normal;
 }
 
 .link_top a,
@@ -380,9 +391,9 @@ h3 {
 	float: left;
 	margin: 10px 20px 0 0;
 	line-height: 1.5em;
-	padding: 0 0 0 20px;
-	font-size: 150%;
-	background: url(/images/tags.png) center left no-repeat;
+	padding: 0 0 0 17px;
+	font-size: 100%;
+	background: url(/images/tags.png) top left no-repeat;
 }
 
 #tags a {
@@ -396,10 +407,10 @@ h3 {
 
 .service p,
 .blog p {
-	font-family: georgia ,serif;
-	font-size: 150%;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
+	font-size: 100%;
 	color: #474747;
-	line-height: 1.4em;
+	line-height: 1.6em;
 }
 
 .blog p {
@@ -412,14 +423,15 @@ h3 {
 
 .list {
 	margin: 30px 0 30px 30px;
-	font-family: georgia ,serif;
-	font-size: 150%;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
+	font-size: 100%;
 	color: #474747;
 	line-height: 1.4em;
 }
 
 .list li {
-	list-style-type: circle;
+	list-style-type: square;
+	color: #474747;
 }
 
 .list li a,
@@ -454,8 +466,11 @@ h3 {
 }
 
 .blog samp {
-	font-size: 140%;
+	display: block;
+	padding: 10px;
+	font-size: 100%;
 	color: #9C9284;
+	background-color: #F6F6EE;
 }
 
 samp .tab {
@@ -469,7 +484,7 @@ samp .tab {
 
 .note p {
 	color: #aaa;
-	font-family: Georgia, sans-serif;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	font-style: italic;
 }
 
@@ -501,17 +516,17 @@ samp .tab {
 
 #commentinput {
 	padding: 0 0 20px 0;
-	margin: 0 0 20px 0;
+	margin: 20px 0 20px 0;
 	border-bottom: 5px solid #99CC66;
 }
 
 #commentinput p {
-	padding: 0 0 10px 0;
+	padding: 0 0 0px 0;
 	margin: 0 0 20px 0;
 	border-bottom: 5px solid #99CC66;
 	font-size: 150%;
-	font-family: "Century Gothic", "AppleGothic", sans-serif;
-	color: #474747;
+	font-family: Georgia,serif;
+	color: #99CC66;
 }
 
 #commentinput #success p,
@@ -522,8 +537,8 @@ samp .tab {
 .input p {
 	padding: 0 0 10px 0;
 	margin: 0 0 20px 0;
-	font-size: 150%;
-	font-family: Georgia, serif;
+	font-size: 100%;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	color: #474747;
 }
 
@@ -538,7 +553,7 @@ form table td {
 form table label {
 	display: block;
 	padding: 10px 20px 0 0;
-	font-size: 130%;
+	font-size: 100%;
 	color: #474747;
 	text-align: right;
 }
@@ -547,7 +562,7 @@ form .meta {
 	margin: 0 0 0 10px;
 	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	color: #9C9284;
-	font-size: 120%;
+	font-size: 100%;
 }
 
 .field {
@@ -555,7 +570,7 @@ form .meta {
 	border: 2px solid #DAE6F1;
 	padding: 8px 4px;
 	font-family: "Century Gothic", "AppleGothic", sans-serif;
-	font-size: 120%;
+	font-size: 100%;
 	color: #474747;
 }
 
@@ -588,7 +603,7 @@ form .meta {
 	padding: 10px;
 	color: #fff;
 	font-family: Georgia, serif;
-	font-size: 150%;
+	font-size: 100%;
 	border: 0;
 	background-color: #6699CC;
 }
@@ -598,14 +613,14 @@ form .meta {
 /* @group Comment */
 
 .comment {
-	margin: 0 0 30px 60px;
+	margin: 0 0 10px 60px;
 	padding: 5px 10px 5px 10px;
-	min-height: 50px;
+	min-height: 30px;
 }
 
 
 .mycomment {
-	margin: 0 60px 30px 0;
+	margin: 0 0 10px 60px;
 }
 
 .gravatar img {
@@ -633,29 +648,30 @@ hr {
 }
 
 .mygravatar img {
-	float: right;
+	float: left;
 }
 
 .comment p {
-	font-size: 150%;
-	font-family: georgia, serif;
+	font-size: 100%;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	color: #aaa;
 	font-style: italic;
-	line-height: 1.4em;
+	line-height: 1.6em;
 }
 
 .mycomment p {
-	text-align: right;
+	text-align: left;
 }
 
 .comment .meta {
 	margin: 10px 0 0 0;
 	text-align: left;
-	font-size: 100%;
+	font-style: normal;
+	font-size: 90%;
 }
 
 .mycomment .meta {
-	text-align: right;
+	text-align: left;
 }
 
 .comment a {
@@ -676,7 +692,7 @@ hr {
 #info_line,
 #criteria {
 	margin: 0 0 30px 0;
-	font-size: 140%;
+	font-size: 100%;
 	color: #676767;
 	text-align: center;
 	font-family: "Century Gothic", "AppleGothic", sans-serif;
@@ -688,10 +704,10 @@ hr {
 
 #criteria span {
 	margin: 0 0 0 20px;
-	padding: 7px 16px;
+	padding: 5px 12px;
 	background-color: #E6E6CC;
-	-webkit-border-radius: 15px;
-	-moz-border-radius: 20px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 15px;
 }
 
 .search_item {
@@ -700,7 +716,7 @@ hr {
 
 .search_item li {
 	list-style-type: upper-roman;
-	font-size: 150%;
+	font-size: 100%;
 	margin: 0 0 40px 0;
 }
 
@@ -713,7 +729,7 @@ hr {
 }
 
 .search_item p {
-	font-family: Georgia, serif;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	font-size: 90%;
 	line-height: 1.4em;
 	color: #474747;
@@ -744,7 +760,7 @@ hr {
 /* @group Cloud */
 
 #cloud {
-	font-size: 150%;
+	font-size: 100%;
 	margin: 0 0 30px 0;
 	text-align: center;
 	line-height: 2em;
@@ -765,27 +781,27 @@ hr {
 }
 
 .cloud1 {
-	font-size: 60%;
+	font-size: 100%;
 	color: #B3CCE6;
 }
 
 .cloud2 {
-	font-size: 80%;
+	font-size: 120%;
 	color: #8CB3D9;
 }
 
 .cloud3 {
-	font-size: 100%;
+	font-size: 140%;
 	color: #6699CC;
 }
 
 .cloud4 {
-	font-size: 120%;
+	font-size: 160%;
 	color: #4080BF;
 }
 
 .cloud5 {
-	font-size: 140%;
+	font-size: 180%;
 	color: #336699;
 }
 
@@ -796,10 +812,10 @@ hr {
 .mytext {
 	clear: both;
 	padding: 20px 0 40px 0;
-	font-size: 180%;
+	font-size: 100%;
 	line-height: 1.4em;
 	text-align: justify;
-	font-family: Georgia, serif;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	color: #474747;
 }
 
@@ -829,7 +845,7 @@ hr {
 #more,
 #back {
 	padding: 10px 0 30px 0;
-	font-size: 140%;
+	font-size: 100%;
 	color: #676767;
 }
 
@@ -863,10 +879,10 @@ hr {
 #error p {
 	padding: 10px 20px;
 	text-align: center;
-	font-family: georgia, serif;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	color: #FF887A;
 	line-height: 1em;
-	font-size: 150%;
+	font-size: 100%;
 }
 
 #success p {
@@ -878,6 +894,7 @@ hr {
 /* @group Footer */
 
 #footer {
+	font-size: 80%;
 	padding: 10px 50px 30px 50px;
 	color: #9C9284;
 	border-top: 5px solid #9C9284;
@@ -943,14 +960,14 @@ hr {
 .admin li {
 	margin: 0 20px 0 0;
 	display: inline;
-	font-family: georgia, serif;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	color: #ccc;
-	font-size: 130%;
+	font-size: 100%;
 }
 
 .admin a {
 	text-decoration: none;
-	font-family: georgia, serif;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	color: #ccc;
 }
 
@@ -965,8 +982,8 @@ hr {
 
 #admin td {
 	padding: 10px 0 10px 0;
-	font-family: georgia, serif;
-	font-size: 120%;
+	font-family: "Century Gothic", "AppleGothic", sans-serif;
+	font-size: 100%;
 	color: #676767;
 }
 

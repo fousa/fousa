@@ -1,5 +1,5 @@
 %div{ :class => comment.personal_comment ? "mygravatar" : "gravatar" }
-  = link_to_unless !admin?, raw(gravatar_for(comment, :size => 50)), post_comment_path(comment.post, comment), :confirm => 'Are you sure?', :method => :delete
+  = link_to_unless !admin?, raw(gravatar_for(comment, :size => 40)), post_comment_path(comment.post, comment), :confirm => 'Are you sure?', :method => :delete
 
 %div{ :class => comment.personal_comment ? "comment mycomment" : "comment" }
   %p
