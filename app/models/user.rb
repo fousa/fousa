@@ -2,16 +2,10 @@ class User
 
   include ActiveModel::Validations
 
-  ### VALIDATIONS ###
-
   validates :password, :inclusion => { :in => [CONFIG["fousa"]["password"]] }
-
-  ### ACCESSORS ###
 
   attr_accessor :id,
                 :password
-
-  ### INSTANCE METHODS ###
 
   def initialize(options={})
     [:password].each do |field|

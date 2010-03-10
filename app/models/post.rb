@@ -1,18 +1,16 @@
 class Post < ActiveRecord::Base
 
-  ### ASSOCIATIONS ###
-
   has_many :comments
 
   acts_as_taggable
 
-  ### VALIDATIONS ###
+  default_value_for :created_at do
+    Post.next_time
+  end
 
   validates :title,     :presence => true, :if => Proc.new { |p| not p.note }
   validates :permalink, :presence => true, :if => Proc.new { |p| not p.note }, :uniqueness => true, :format => { :with => /^[a-z,0-9,-]*$/ }
   validates :content,   :presence => true
-
-  ### SCOPES ###
 
   scope :sorted, order("posts.created_at DESC")
 
@@ -28,8 +26,6 @@ class Post < ActiveRecord::Base
     active.where(:created_at => "'#{time}'".."'#{time.end_of_month}'").sorted
   }
 
-  ### CLASS METHODS ###
-
   class << self
 
     def archive_table
@@ -40,6 +36,10 @@ class Post < ActiveRecord::Base
         end
         yearly_archive.update({ year => monthly_archive })
       end
+    end
+
+    def next_time
+      Post.sorted.first.created_at + 3.days
     end
 
   end

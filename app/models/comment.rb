@@ -1,10 +1,6 @@
 class Comment < ActiveRecord::Base
 
-  ### ASSOCIATIONS ###
-
   belongs_to :post
-
-  ### VALIDATIONS ###
 
   validates :name,    :presence  => true
   validates :comment, :presence  => true
@@ -12,15 +8,9 @@ class Comment < ActiveRecord::Base
   validates :email,   :format    => { :with => /^.+@[^\.].*\.[a-z]{2,}$/ix },                                                           :if => Proc.new { |c| not c.email.blank? }
   validates :snow,    :inclusion => { :in   => %w( cold ) }
 
-  ### ACCESSORS ###
-
   attr_accessor :snow
 
-  ### SCOPES ###
-
   scope :sorted, order("comments.created_at ASC")
-
-  ### CALLBACKS ###
 
   before_validation :set_personal_comment_data
 
