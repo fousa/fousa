@@ -18,9 +18,9 @@ class Post < ActiveRecord::Base
 
   scope :active,    lambda { where("created_at <= ?", Time.zone.now).sorted }
   scope :inactive,  lambda { where("created_at > ?",  Time.zone.now).sorted }
-  scope :blog,      active.limit(10)
-  scope :posts,     active.where(:note => false)
-  scope :scratches, active.where(:note => true)
+  scope :blog,      lambda { active.limit(10) }
+  scope :posts,     lambda { active.where(:note => false) }
+  scope :scratches, lambda { active.where(:note => true) }
 
   scope :permalink, lambda { |permalink, admin| admin ? where(:permalink => permalink) : active.where(:permalink => permalink) }
   scope :archive,   lambda { |year, month|
