@@ -34,7 +34,7 @@
       %li#search_menu
         - form_tag searches_path, :method => "get" do
           %p
-            = text_field_tag :search, '', :value => @query,  :size => 10
+            = text_field_tag :search, '', :value => @query,  :size => 15
             = image_submit_tag "/images/search.png", :id => "do_search"
 
       = render :partial => "helpers/menu_item", :locals => { :selected_title => @selected, :checked_title => "blog", :checked_link => blog_path, :keep_linking => @keep_linking }

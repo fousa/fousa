@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	font-size: small;
+	font-size: large;
 	font-family: "Century Gothic", "AppleGothic", sans-serif;
 	background-color: #E6E6CC;
 }
@@ -34,18 +34,18 @@ body {
 #menu li {
 	display: inline;
 	margin: 0 5px;
-	padding-bottom: 8px;
+	font-size: 120%;
+	padding-bottom: 4px;
 }
 
 #menu #selected {
 	color: #eee;
-	font-size: 100%;
-	border-bottom: 5px solid #676767;
+	border-bottom: 9px solid #676767;
 }
 
 #menu #selected a {
 	font-size: 100%;
-	padding-bottom: 10px;
+	padding-bottom: 6px;
 }
 
 #menu #search_menu {
@@ -68,7 +68,7 @@ body {
 
 #menu #do_search {
 	position: relative;
-	top: -3px;
+	top: 2px;
 	margin: 0 0 0 10px;
 }
 
@@ -89,7 +89,7 @@ body {
 }
 
 #inner-content {
-	width: 800px;
+	width: 900px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -112,8 +112,8 @@ body {
 }
 
 h1 {
-	padding: 20px 0 0 0;
-	margin:  0 0 50px 0;
+	padding: 10px 0 0 0;
+	margin:  0 0 20px 0;
 	font-size: 500%;
 	font-weight: lighter;
 	color: #FF9900;
@@ -781,27 +781,52 @@ hr {
 }
 
 .cloud1 {
-	font-size: 100%;
+	font-size: 80%;
 	color: #B3CCE6;
 }
 
 .cloud2 {
-	font-size: 120%;
-	color: #8CB3D9;
+	font-size: 90%;
+	color: #B3CCE6;
 }
 
 .cloud3 {
-	font-size: 140%;
-	color: #6699CC;
+	font-size: 100%;
+	color: #8CB3D9;
 }
 
 .cloud4 {
-	font-size: 160%;
-	color: #4080BF;
+	font-size: 110%;
+	color: #8CB3D9;
 }
 
 .cloud5 {
+	font-size: 120%;
+	color: #6699CC;
+}
+
+.cloud6 {
+	font-size: 130%;
+	color: #6699CC;
+}
+
+.cloud7 {
+	font-size: 140%;
+	color: #4080BF;
+}
+
+.cloud8 {
+	font-size: 150%;
+	color: #4080BF;
+}
+
+.cloud9 {
 	font-size: 180%;
+	color: #336699;
+}
+
+.cloud10 {
+	font-size: 170%;
 	color: #336699;
 }
 
