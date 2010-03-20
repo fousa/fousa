@@ -7,6 +7,11 @@ class PostsController < ApplicationController
     @posts = Post.blog
 
     initialize_posts
+
+    respond_to do |format|
+      format.html
+      format.rss
+    end
   end
 
   def show
