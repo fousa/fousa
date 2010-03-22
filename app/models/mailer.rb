@@ -5,16 +5,20 @@ class Mailer < ActionMailer::Base
   def contact_notifier(contact)
     @contact = contact
 
-    mail :from =>    "#{contact.name} <#{contact.email}>",
-         :subject => "Fousa :: Contact message from #{contact.name}"
+    mail(:from =>    "#{contact.name} <#{contact.email}>",
+         :subject => "Fousa :: Contact message from #{contact.name}") do |format|
+      format.text
+    end
   end
 
   def comment_notifier(comment)
     @comment = comment
 
-    mail :bcc     => comment.post.comments.map(&:email).uniq.select { |email| email != @comment.email }.join(", "),
+    mail(:bcc     => comment.post.comments.map(&:email).uniq.select { |email| email != @comment.email }.join(", "),
          :from    => "Fousa Commenting System <jelle@fousa.be>",
-         :subject => "Fousa :: Comment from #{comment.name}"
+         :subject => "Fousa :: Comment from #{comment.name}") do |format|
+      format.text
+    end
   end
 
 end
