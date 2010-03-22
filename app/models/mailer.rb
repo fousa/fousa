@@ -12,8 +12,9 @@ class Mailer < ActionMailer::Base
   def comment_notifier(comment)
     @comment = comment
 
-    mail :from    => "Fousa Commenting System <jelle@fousa.be>",
-         :subject => "Fousa :: Post comment from #{comment.name}"
+    mail :bcc     => comment.post.comments.map(&:email).uniq.select { |email| email != @comment.email }.join(", "),
+         :from    => "Fousa Commenting System <jelle@fousa.be>",
+         :subject => "Fousa :: Comment from #{comment.name}"
   end
 
 end

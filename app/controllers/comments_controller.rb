@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment_show = true
 
     if @comment.save
-      Mailer.comment_notifier(@comment).deliver unless @comment.personal_comment
+      Mailer.comment_notifier(@comment).deliver
 
       redirect_to "#{post_path(@post.permalink)}#commentinput", :notice => "Your comment was successfully submitted"
     else

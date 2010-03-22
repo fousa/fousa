@@ -1,8 +1,8 @@
-Hi Jelle,
+Hi,
 
-This message was send to you by <%= @comment.name %>
+<%= @comment.name %> replied on a comment discussion to a blog post in which you were involved!
 
-The comment was posten on the following article: http://www.fousa.be<%= permalink_path(@comment.post.permalink) %>
+The comment was posted on the following article: <%= permalink_path(@comment.post.permalink) %>
 
 Name: <%= @comment.name %>
 Email: <%= @comment.email %>
