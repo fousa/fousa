@@ -16,9 +16,7 @@ class Mailer < ActionMailer::Base
 
     mail(:bcc     => comment.post.comments.map(&:email).uniq.select { |email| email != @comment.email }.join(", "),
          :from    => "Fousa Commenting System <jelle@fousa.be>",
-         :subject => "Fousa :: Comment from #{comment.name}") do |format|
-      format.text
-    end
+         :subject => "Fousa :: Comment from #{comment.name}")
   end
 
 end
