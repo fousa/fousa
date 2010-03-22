@@ -657,10 +657,12 @@ hr {
 	color: #aaa;
 	font-style: italic;
 	line-height: 1.6em;
+	margin-left: 15px;
 }
 
 .mycomment p {
 	text-align: left;
+	margin-left: 15px;
 }
 
 .comment .meta {
@@ -668,10 +670,12 @@ hr {
 	text-align: left;
 	font-style: normal;
 	font-size: 90%;
+	margin-left: 15px;
 }
 
 .mycomment .meta {
 	text-align: left;
+	margin-left: 15px;
 }
 
 .comment a {
